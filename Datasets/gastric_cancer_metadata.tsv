@@ -1,0 +1,311 @@
+sample-id	original-sample-id	Site	Concentration (ng/uL)	Volume (uL)	Quality (ug)	Gender 	Age	Group	Histopathology	Histopathology      (lauren classification)	H. pylori status                                 13 C-urea breath test	Height (m)	Weight (kg)	BMI  (kg/m2)	Blood glucose (mmol/L)	Total cholesterol (mmol/L)	Triglyceride (mmol/L)
+ERR2597171	HC.A01	gastric antrum	57.6	26	1.4976	female	57	Healthy control (HC)	Normal gastric mucosa 		Negative	1.64	55	20.5	4.98	4.33	1.22
+ERR2597168	HC.A02	gastric antrum	79.5	33	2.6235	female	45	Healthy control (HC)	Normal gastric mucosa 		Negative	1.62	54	20.6	3.99	3.26	0.77
+ERR2597169	HC.A03	gastric antrum	62.1	25	1.5525	female	50	Healthy control (HC)	Normal gastric mucosa 		Negative	1.65	60	22	5	4.22	0.88
+ERR2597210	HC.A04	gastric antrum	87.5	35	3.0625	male	39	Healthy control (HC)	Normal gastric mucosa 		Negative	1.7	63	21.8	5.23	3.48	1.33
+ERR2597215	HC.A05	gastric antrum	70.7	31	2.1917	female	26	Healthy control (HC)	Normal gastric mucosa 		Negative	1.55	46	19.2	4.78	3.95	1.28
+ERR2597172	HC.A06	gastric antrum	77	33	2.541	female	24	Healthy control (HC)	Normal gastric mucosa 		Negative	1.67	60	21.5	4.6	3.65	0.89
+ERR2597206	HC.A07	gastric antrum	58.4	28	1.6352	female	33	Healthy control (HC)	Normal gastric mucosa 		Negative	1.63	55	20.7	3.66	4.01	0.78
+ERR2597164	HC.A08	gastric antrum	59.3	35	2.0755	male	24	Healthy control (HC)	Normal gastric mucosa 		Negative	1.78	70	22.1	4.65	3.32	0.76
+ERR2597165	HC.A09	gastric antrum	87.1	27	2.3517	male	25	Healthy control (HC)	Normal gastric mucosa 		Negative	1.77	68	21.7	5.43	3.29	1.33
+ERR2597213	HC.A10	gastric antrum	75	32	2.4	male	29	Healthy control (HC)	Normal gastric mucosa 		Negative	1.7	65	22.5	4.77	3.9	1.1
+ERR2597212	HC.A11	gastric antrum	77.6	32	2.4832	female	17	Healthy control (HC)	Normal gastric mucosa 		Negative	1.68	55	19.5	5.46	4.12	1.28
+ERR2597125	HC.A12	gastric antrum	65.8	25	1.645	female	48	Healthy control (HC)	Normal gastric mucosa 		Negative	1.65	61	22.4	4.68	3.47	1.22
+ERR2597214	HC.A13	gastric antrum	74.9	30	2.247	male	50	Healthy control (HC)	Normal gastric mucosa 		Negative	1.76	72	23.2	4.88	4.87	1.32
+ERR2597217	HC.A14	gastric antrum	87.5	32	2.8	female	42	Healthy control (HC)	Normal gastric mucosa 		Negative	1.63	53	20	5.06	3.97	0.94
+ERR2597216	HC.A15	gastric antrum	59.8	33	1.9734	male	50	Healthy control (HC)	Normal gastric mucosa 		Negative	1.81	75	22.9	4.05	4.32	1.4
+ERR2597219	HC.A16	gastric antrum	82.4	34	2.8016	female	50	Healthy control (HC)	Normal gastric mucosa 		Negative	1.65	60	22	4.65	3.53	1.45
+ERR2597129	HC.A17	gastric antrum	59.7	35	2.0895	female	61	Healthy control (HC)	Normal gastric mucosa 		Negative	1.66	57	20.7	4.74	3.46	0.85
+ERR2597208	HC.A18	gastric antrum	57.6	35	2.016	male	50	Healthy control (HC)	Normal gastric mucosa 		Negative	1.74	71	23.5	5.72	3.95	0.88
+ERR2597207	HC.A19	gastric antrum	83.5	29	2.4215	male	26	Healthy control (HC)	Normal gastric mucosa 		Negative	1.72	67	22.7	5.19	3.44	0.77
+ERR2597244	HC.A20	gastric antrum	89.5	35	3.1325	male	46	Healthy control (HC)	Normal gastric mucosa 		Negative	1.82	75	22.6	4.72	4.03	1.32
+ERR2597030	HC.A21	gastric antrum	88.8	29	2.5752	female	33	Healthy control (HC)	Normal gastric mucosa 		Negative	1.59	57	22.6	3.98	3.87	0.85
+ERR2597246	HC.A22	gastric antrum	70.1	30	2.103	male	49	Healthy control (HC)	Normal gastric mucosa 		Negative	1.75	69	22.5	4.27	4.16	1.37
+ERR2597247	HC.A23	gastric antrum	54.3	33	1.7919	male	67	Healthy control (HC)	Normal gastric mucosa 		Negative	1.77	74	23.6	4.56	3.65	1.53
+ERR2597241	HC.A24	gastric antrum	55.6	30	1.668	female	62	Healthy control (HC)	Normal gastric mucosa 		Negative	1.6	60	23.4	5.18	3.66	1.22
+ERR2597242	HC.A25	gastric antrum	68.8	31	2.1328	female	54	Healthy control (HC)	Normal gastric mucosa 		Negative	1.64	59	21.9	4.34	4.23	0.98
+ERR2597243	HC.A26	gastric antrum	67.9	32	2.1728	male	61	Healthy control (HC)	Normal gastric mucosa 		Negative	1.77	74	23.6	5.05	4.01	1.23
+ERR2597250	HC.A28	gastric antrum	52.4	33	1.7292	male	59	Healthy control (HC)	Normal gastric mucosa 		Negative	1.74	73	24	5.05	3.33	0.78
+ERR2597251	HC.A29	gastric antrum	78.5	28	2.198	male	64	Healthy control (HC)	Normal gastric mucosa 		Negative	1.73	62	20.7	5.4	4.56	1.42
+ERR2597271	HC.A30	gastric antrum	50.7	31	1.5717	male	66	Healthy control (HC)	Normal gastric mucosa 		Negative	1.8	76	23.5	4.86	3.98	1.33
+ERR2597230	HC.B01	gastric body	65.9	31	2.0429	female	57	Healthy control (HC)	Normal gastric mucosa 		Negative	1.64	55	20.5	4.98	4.33	1.22
+ERR2597255	HC.B02	gastric body	88	25	2.2	female	45	Healthy control (HC)	Normal gastric mucosa 		Negative	1.62	54	20.6	3.99	3.26	0.77
+ERR2597232	HC.B03	gastric body	61.2	25	1.53	female	50	Healthy control (HC)	Normal gastric mucosa 		Negative	1.65	60	22	5	4.22	0.88
+ERR2597151	HC.B04	gastric body	86.1	28	2.4108	male	39	Healthy control (HC)	Normal gastric mucosa 		Negative	1.7	63	21.8	5.23	3.48	1.33
+ERR2597237	HC.B06	gastric body	85.7	25	2.1425	female	26	Healthy control (HC)	Normal gastric mucosa 		Negative	1.55	46	19.2	4.78	3.95	1.28
+ERR2597236	HC.B07	gastric body	60.2	31	1.8662	female	24	Healthy control (HC)	Normal gastric mucosa 		Negative	1.67	60	21.5	4.6	3.65	0.89
+ERR2597239	HC.B08	gastric body	84.6	30	2.538	female	33	Healthy control (HC)	Normal gastric mucosa 		Negative	1.63	55	20.7	3.66	4.01	0.78
+ERR2597238	HC.B09	gastric body	66.6	31	2.0646	male	24	Healthy control (HC)	Normal gastric mucosa 		Negative	1.78	70	22.1	4.65	3.32	0.76
+ERR2597193	HC.B10	gastric body	67.3	31	2.0863	male	25	Healthy control (HC)	Normal gastric mucosa 		Negative	1.77	68	21.7	5.43	3.29	1.33
+ERR2597191	HC.B12	gastric body	67	32	2.144	male	29	Healthy control (HC)	Normal gastric mucosa 		Negative	1.7	65	22.5	4.77	3.9	1.1
+ERR2597272	HC.B13	gastric body	68.6	30	2.058	female	17	Healthy control (HC)	Normal gastric mucosa 		Negative	1.68	55	19.5	5.46	4.12	1.28
+ERR2597196	HC.B14	gastric body	78.7	34	2.6758	female	48	Healthy control (HC)	Normal gastric mucosa 		Negative	1.65	61	22.4	4.68	3.47	1.22
+ERR2597197	HC.B15	gastric body	60.1	35	2.1035	male	50	Healthy control (HC)	Normal gastric mucosa 		Negative	1.76	72	23.2	4.88	4.87	1.32
+ERR2597194	HC.B16	gastric body	60.9	28	1.7052	female	42	Healthy control (HC)	Normal gastric mucosa 		Negative	1.63	53	20	5.06	3.97	0.94
+ERR2597195	HC.B17	gastric body	69.8	31	2.1638	male	50	Healthy control (HC)	Normal gastric mucosa 		Negative	1.81	75	22.9	4.05	4.32	1.4
+ERR2597198	HC.B18	gastric body	51.3	33	1.6929	female	50	Healthy control (HC)	Normal gastric mucosa 		Negative	1.65	60	22	4.65	3.53	1.45
+ERR2597199	HC.B19	gastric body	67.1	26	1.7446	female	61	Healthy control (HC)	Normal gastric mucosa 		Negative	1.66	57	20.7	4.74	3.46	0.85
+ERR2597085	HC.B20	gastric body	85	31	2.635	male	50	Healthy control (HC)	Normal gastric mucosa 		Negative	1.74	71	23.5	5.72	3.95	0.88
+ERR2597083	HC.B21	gastric body	64.7	32	2.0704	male	26	Healthy control (HC)	Normal gastric mucosa 		Negative	1.72	67	22.7	5.19	3.44	0.77
+ERR2597091	HC.B22	gastric body	83.9	27	2.2653	male	46	Healthy control (HC)	Normal gastric mucosa 		Negative	1.82	75	22.6	4.72	4.03	1.32
+ERR2597073	HC.B23	gastric body	82.1	28	2.2988	female	33	Healthy control (HC)	Normal gastric mucosa 		Negative	1.59	57	22.6	3.98	3.87	0.85
+ERR2597095	HC.B24	gastric body	67.2	25	1.68	male	49	Healthy control (HC)	Normal gastric mucosa 		Negative	1.75	69	22.5	4.27	4.16	1.37
+ERR2597231	HC.B25	gastric body	50.1	35	1.7535	male	67	Healthy control (HC)	Normal gastric mucosa 		Negative	1.77	74	23.6	4.56	3.65	1.53
+ERR2597089	HC.B26	gastric body	85.7	29	2.4853	female	62	Healthy control (HC)	Normal gastric mucosa 		Negative	1.6	60	23.4	5.18	3.66	1.22
+ERR2597040	HC.B27	gastric body	79.8	29	2.3142	female	54	Healthy control (HC)	Normal gastric mucosa 		Negative	1.64	59	21.9	4.34	4.23	0.98
+ERR2596977	HC.B28	gastric body	74	27	1.998	male	61	Healthy control (HC)	Normal gastric mucosa 		Negative	1.77	74	23.6	5.05	4.01	1.23
+ERR2596976	HC.B29	gastric body	83.6	26	2.1736	female	62	Healthy control (HC)	Normal gastric mucosa 		Negative	1.6	58	22.7	5.76	3.77	1.54
+ERR2597046	CG.A01	gastric antrum	75.4	33	2.4882	male	59	Healthy control (HC)	Normal gastric mucosa 		Negative	1.74	73	24	5.05	3.33	0.78
+ERR2597045	CG.A02	gastric antrum	84.2	26	2.1892	male	64	Healthy control (HC)	Normal gastric mucosa 		Negative	1.73	62	20.7	5.4	4.56	1.42
+ERR2597044	CG.A03	gastric antrum	72.4	31	2.2444	male	66	Healthy control (HC)	Normal gastric mucosa 		Negative	1.8	76	23.5	4.86	3.98	1.33
+ERR2597051	CG.A04	gastric antrum	59.4	26	1.5444	male	53	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Positive	1.79	69	21.5	5.19	3.65	1.21
+ERR2597050	CG.A05	gastric antrum	83.5	35	2.9225	female	26	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.67	56	20.1	4.36	4.8	1.42
+ERR2597049	CG.A06	gastric antrum	89.4	30	2.682	male	63	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Positive	1.8	67.5	20.8	4.42	3.57	0.76
+ERR2597048	CG.A07	gastric antrum	64.9	33	2.1417	female	33	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.61	62	23.9	4.67	3.61	0.96
+ERR2597054	CG.A08	gastric antrum	84.9	35	2.9715	male	50	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.77	65	20.7	4.74	3.49	1.03
+ERR2597053	CG.A09	gastric antrum	65.7	35	2.2995	female	46	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.63	51	19.2	4.12	4.18	1.11
+ERR2597004	CG.A10	gastric antrum	68	32	2.176	female	65	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.63	60	22.6	4.42	4.48	1.42
+ERR2597005	CG.A11	gastric antrum	55	35	1.925	female	65	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.61	55	21.2	4.02	3.87	0.88
+ERR2597006	CG.A12	gastric antrum	61.8	30	1.854	male	76	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.78	65	20.5	3.67	3.16	0.82
+ERR2597007	CG.A13	gastric antrum	66.9	30	2.007	female	62	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Positive	1.65	56.5	20.8	4.28	3.41	0.87
+ERR2597000	CG.A14	gastric antrum	52.1	27	1.4067	female	29	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.67	57	20.4	4.49	3.73	1.3
+ERR2597001	CG.A15	gastric antrum	72.3	29	2.0967	male	28	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Positive	1.74	61	20.1	5.17	4.03	0.98
+ERR2597002	CG.A16	gastric antrum	67	25	1.675	female	52	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.56	55	22.6	5.01	3.5	0.82
+ERR2597003	CG.A17	gastric antrum	69.6	30	2.088	female	34	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.63	60	22.6	4.1	4.01	0.71
+ERR2597010	CG.A18	gastric antrum	72.2	27	1.9494	male	59	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Positive	1.78	68	21.5	3.85	3.66	0.68
+ERR2597011	CG.A19	gastric antrum	85.5	27	2.3085	male	58	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.76	70	22.6	5.59	3.83	1.41
+ERR2597224	CG.A20	gastric antrum	70	28	1.96	female	20	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.53	52	22.5	4.27	3.38	0.75
+ERR2597223	CG.A21	gastric antrum	90	28	2.52	female	50	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.68	59	20.9	4.22	4.17	1.55
+ERR2597276	CG.B01	gastric body	50.9	35	1.7815	male	59	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.72	65	22	4.76	4.11	0.98
+ERR2597277	CG.B02	gastric body	76.6	30	2.298	female	74	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.56	55	22.6	5.03	3.86	0.87
+ERR2597278	CG.B03	gastric body	88.1	31	2.7311	male	28	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Positive	1.76	67	21.6	4.87	3.98	1.02
+ERR2597279	CG.B04	gastric body	68.5	25	1.7125	male	53	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Positive	1.79	69	21.5	5.19	3.65	1.21
+ERR2597280	CG.B05	gastric body	64	34	2.176	female	26	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.67	56	20.1	4.36	4.8	1.42
+ERR2597281	CG.B06	gastric body	59.6	29	1.7284	male	63	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Positive	1.8	67.5	20.8	4.42	3.57	0.76
+ERR2597282	CG.B07	gastric body	65.8	35	2.303	female	33	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.61	62	23.9	4.67	3.61	0.96
+ERR2597274	CG.B08	gastric body	71	28	1.988	male	50	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.77	65	20.7	4.74	3.49	1.03
+ERR2597275	CG.B09	gastric body	54.7	30	1.641	female	46	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.63	51	19.2	4.12	4.18	1.11
+ERR2596996	CG.B10	gastric body	76.6	30	2.298	female	65	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.63	60	22.6	4.42	4.48	1.42
+ERR2596995	CG.B12	gastric body	61.6	30	1.848	male	76	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.78	65	20.5	3.67	3.16	0.82
+ERR2596994	CG.B13	gastric body	59	30	1.77	female	62	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Positive	1.65	56.5	20.8	4.28	3.41	0.87
+ERR2596993	CG.B14	gastric body	88.7	26	2.3062	female	29	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.67	57	20.4	4.49	3.73	1.3
+ERR2596992	CG.B15	gastric body	69.2	28	1.9376	male	28	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Positive	1.74	61	20.1	5.17	4.03	0.98
+ERR2596991	CG.B16	gastric body	63.2	26	1.6432	female	52	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.56	55	22.6	5.01	3.5	0.82
+ERR2596990	CG.B17	gastric body	60.8	33	2.0064	female	34	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.63	60	22.6	4.1	4.01	0.71
+ERR2596999	CG.B18	gastric body	60.7	25	1.5175	male	59	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Positive	1.78	68	21.5	3.85	3.66	0.68
+ERR2596998	CG.B19	gastric body	89.4	29	2.5926	male	58	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.76	70	22.6	5.59	3.83	1.41
+ERR2597218	CG.B20	gastric body	56.5	32	1.808	female	20	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.53	52	22.5	4.27	3.38	0.75
+ERR2597133	CG.B21	gastric body	78.1	32	2.4992	female	50	Chronic gastritis (CG)	Gastric mucosal chronic inflammation with no atrophic change 		Negative	1.68	59	20.9	4.22	4.17	1.55
+ERR2597107	IM.A01	gastric antrum	75.2	29	2.1808	male	53	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.82	80	24.2	4.69	3.31	1.17
+ERR2597106	IM.A02	gastric antrum	67.6	29	1.9604	male	52	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.78	76	24	4.76	4.59	1.67
+ERR2597090	IM.A03	gastric antrum	76.7	32	2.4544	male	65	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.8	70	21.6	3.96	3.45	1.55
+ERR2597240	IM.A04	gastric antrum	70.9	26	1.8434	female	63	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.66	55	20	4.53	3.87	1.41
+ERR2597111	IM.A05	gastric antrum	69	34	2.346	female	51	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.65	60	22	4.28	4.21	0.99
+ERR2597202	IM.A06	gastric antrum	56.9	26	1.4794	female	54	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.63	57	21.5	4.5	3.65	1.45
+ERR2597109	IM.A07	gastric antrum	89.4	30	2.682	male	60	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.76	70.5	22.8	5.2	3.31	1.21
+ERR2597100	IM.A08	gastric antrum	63.3	31	1.9623	female	69	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.61	58	22.4	4.86	3.47	1.02
+ERR2597179	IM.A09	gastric antrum	84.2	29	2.4418	male	53	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.81	76	23.2	4.69	4.12	0.88
+ERR2597069	IM.A10	gastric antrum	82.6	26	2.1476	male	51	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.76	69	22.3	4.87	4.88	0.73
+ERR2597070	IM.A11	gastric antrum	85.8	31	2.6598	male	67	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.76	72	23.2	5.44	5.02	1.21
+ERR2597071	IM.A12	gastric antrum	60.6	29	1.7574	male	74	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.73	60	20	5.62	4.34	0.99
+ERR2597072	IM.A13	gastric antrum	82.1	31	2.5451	male	52	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.74	67	22.1	3.99	3.66	0.87
+ERR2597170	IM.A14	gastric antrum	65.4	33	2.1582	female	45	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.66	60	21.8	4.97	3.48	0.76
+ERR2597066	IM.A15	gastric antrum	79.4	31	2.4614	male	56	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.76	72	23.2	4.4	3.56	1.02
+ERR2597173	IM.A16	gastric antrum	62.1	30	1.863	male	46	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.78	68	21.5	5.39	3.48	1.25
+ERR2597234	IM.A17	gastric antrum	74.8	35	2.618	male	47	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.78	71	22.4	4.75	3.33	0.86
+ERR2597152	IM.A18	gastric antrum	61.4	35	2.149	female	52	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.65	61	22.4	4.92	4.12	0.92
+ERR2597062	IM.A19	gastric antrum	66.8	33	2.2044	female	61	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.62	63	24	5.3	4.52	1.15
+ERR2597222	IM.A20	gastric antrum	87	33	2.871	female	52	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.69	61	21.4	4.3	3.92	0.79
+ERR2597012	IM.A21	gastric antrum	54.2	31	1.6802	male	55	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.72	70	23.7	4.87	4.48	0.62
+ERR2597015	IM.A22	gastric antrum	64.3	29	1.8647	female	55	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.56	55	22.6	5.59	4.25	1.36
+ERR2597014	IM.A23	gastric antrum	60.5	32	1.936	female	54	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.64	58	21.6	4.33	3.27	1.19
+ERR2597017	IM.A24	gastric antrum	53.7	25	1.3425	male	61	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.73	66	22.1	4.67	3.72	0.92
+ERR2597016	IM.A25	gastric antrum	52.7	30	1.581	female	61	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.61	55	21.2	4.51	4.46	1.33
+ERR2597225	IM.A26	gastric antrum	89.4	26	2.3244	male	48	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.77	69	22	4.67	3.53	0.8
+ERR2597018	IM.A27	gastric antrum	73.7	33	2.4321	male	80	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.75	63	20.6	3.98	4.24	1.11
+ERR2596975	IM.B01	gastric body	61	30	1.83	male	53	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.82	80	24.2	4.69	3.31	1.17
+ERR2597186	IM.B02	gastric body	76.4	25	1.91	male	52	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.78	76	24	4.76	4.59	1.67
+ERR2597047	IM.B03	gastric body	72.9	30	2.187	male	65	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.8	70	21.6	3.96	3.45	1.55
+ERR2596978	IM.B04	gastric body	59.2	26	1.5392	female	63	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.66	55	20	4.53	3.87	1.41
+ERR2597056	IM.B05	gastric body	73.1	35	2.5585	female	51	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.65	60	22	4.28	4.21	0.99
+ERR2596980	IM.B06	gastric body	69.3	32	2.2176	female	54	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.63	57	21.5	4.5	3.65	1.45
+ERR2597068	IM.B07	gastric body	68.4	26	1.7784	male	60	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.76	70.5	22.8	5.2	3.31	1.21
+ERR2597112	IM.B08	gastric body	63.3	33	2.0889	female	69	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.61	58	22.4	4.86	3.47	1.02
+ERR2597203	IM.B09	gastric body	52.7	25	1.3175	male	53	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.81	76	23.2	4.69	4.12	0.88
+ERR2597036	IM.B10	gastric body	59.1	29	1.7139	male	51	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.76	69	22.3	4.87	4.88	0.73
+ERR2597035	IM.B11	gastric body	54.2	30	1.626	male	67	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.76	72	23.2	5.44	5.02	1.21
+ERR2597034	IM.B12	gastric body	73.4	26	1.9084	male	74	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.73	60	20	5.62	4.34	0.99
+ERR2597033	IM.B13	gastric body	77	29	2.233	male	52	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.74	67	22.1	3.99	3.66	0.87
+ERR2597032	IM.B14	gastric body	82.2	34	2.7948	female	45	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.66	60	21.8	4.97	3.48	0.76
+ERR2597031	IM.B15	gastric body	55	30	1.65	male	56	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.76	72	23.2	4.4	3.56	1.02
+ERR2597259	IM.B16	gastric body	59.6	25	1.49	male	46	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.78	68	21.5	5.39	3.48	1.25
+ERR2597029	IM.B17	gastric body	76.4	26	1.9864	male	47	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.78	71	22.4	4.75	3.33	0.86
+ERR2597028	IM.B18	gastric body	77	35	2.695	female	52	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.65	61	22.4	4.92	4.12	0.92
+ERR2597027	IM.B19	gastric body	65	25	1.625	female	61	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.62	63	24	5.3	4.52	1.15
+ERR2597221	IM.B20	gastric body	89.8	26	2.3348	female	52	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.69	61	21.4	4.3	3.92	0.79
+ERR2597226	IM.B21	gastric body	55.6	28	1.5568	male	55	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.72	70	23.7	4.87	4.48	0.62
+ERR2597258	IM.B22	gastric body	63.5	31	1.9685	female	55	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.56	55	22.6	5.59	4.25	1.36
+ERR2597235	IM.B23	gastric body	66	28	1.848	female	54	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.64	58	21.6	4.33	3.27	1.19
+ERR2597205	IM.B24	gastric body	69.5	33	2.2935	male	61	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Negative	1.73	66	22.1	4.67	3.72	0.92
+ERR2597154	IM.B25	gastric body	63.9	28	1.7892	female	61	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.61	55	21.2	4.51	4.46	1.33
+ERR2597200	IM.B26	gastric body	50.5	26	1.313	male	48	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.77	69	22	4.67	3.53	0.8
+ERR2597124	IM.B27	gastric body	54.3	32	1.7376	male	80	Intestinal metaplasia (IM）	Gastric mucosal chronic inflammation accompanying IM		Positive	1.75	63	20.6	3.98	4.24	1.11
+ERR2597108	LIN.A02	gastric antrum	80	27	2.16	female	75	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.62	55	21	4.94	4.11	1.4
+ERR2597110	LIN.A04	gastric antrum	50.6	31	1.5686	female	62	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.6	52	20.3	5.02	3.76	1.15
+ERR2597039	LIN.A05	gastric antrum	85.3	26	2.2178	male	56	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Negative	1.68	60	21.3	3.81	4.25	1.32
+ERR2597211	LIN.A11	gastric antrum	83.5	33	2.7555	male	62	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.68	61	21.6	4.61	3.58	1.42
+ERR2597209	LIN.A15	gastric antrum	87	29	2.523	female	63	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Negative	1.73	60	20	3.9	3.41	1.01
+ERR2597084	LIN.A16	gastric antrum	79.9	31	2.4769	female	78	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Negative	1.71	68	23.3	5.33	4.33	1.28
+ERR2597159	LIN.A19	gastric antrum	61.4	32	1.9648	male	56	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.68	63	22.3	4.39	3.52	0.83
+ERR2597025	LIN.A21	gastric antrum	58.7	30	1.761	male	77	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.78	75	23.7	4.92	3.39	1.08
+ERR2597024	LIN.A22	gastric antrum	85.1	25	2.1275	male	59	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.7	68	23.5	4.61	4.62	0.93
+ERR2597022	LIN.A24	gastric antrum	61.9	27	1.6713	male	63	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Negative	1.74	71	23.5	5.71	3.13	1.25
+ERR2597176	LIN.B02	gastric body	72.2	27	1.9494	female	75	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.62	55	21	4.94	4.11	1.4
+ERR2597181	LIN.B04	gastric body	52.3	33	1.7259	female	62	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.6	52	20.3	5.02	3.76	1.15
+ERR2597182	LIN.B05	gastric body	81.6	29	2.3664	male	56	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Negative	1.68	60	21.3	3.81	4.25	1.32
+ERR2597138	LIN.B11	gastric body	87	27	2.349	male	62	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.68	61	21.6	4.61	3.58	1.42
+ERR2597136	LIN.B15	gastric body	70.9	35	2.4815	female	63	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Negative	1.73	60	20	3.9	3.41	1.01
+ERR2597137	LIN.B16	gastric body	69.5	27	1.8765	female	78	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Negative	1.71	68	23.3	5.33	4.33	1.28
+ERR2597126	LIN.B19	gastric body	65.1	26	1.6926	male	56	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.68	63	22.3	4.39	3.52	0.83
+ERR2597150	LIN.B21	gastric body	65.2	30	1.956	male	77	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.78	75	23.7	4.92	3.39	1.08
+ERR2597118	LIN.B22	gastric body	82.8	25	2.07	male	59	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.7	68	23.5	4.61	4.62	0.93
+ERR2597120	LIN.B24	gastric body	65.8	32	2.1056	male	63	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Negative	1.74	71	23.5	5.71	3.13	1.25
+ERR2597248	LIN.C02	lesion	52.9	32	1.6928	female	75	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.62	55	21	4.94	4.11	1.4
+ERR2597270	LIN.C04	lesion	56.6	25	1.415	female	62	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.6	52	20.3	5.02	3.76	1.15
+ERR2597087	LIN.C05	lesion	67.9	32	2.1728	male	56	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Negative	1.68	60	21.3	3.81	4.25	1.32
+ERR2597079	LIN.C11	lesion	69	34	2.346	male	62	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.68	61	21.6	4.61	3.58	1.42
+ERR2596986	LIN.C15	lesion	63	25	1.575	female	63	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Negative	1.73	60	20	3.9	3.41	1.01
+ERR2597009	LIN.C16	lesion	68.6	34	2.3324	female	78	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Negative	1.71	68	23.3	5.33	4.33	1.28
+ERR2597153	LIN.C19	lesion	67.9	30	2.037	male	56	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.68	63	22.3	4.39	3.52	0.83
+ERR2597160	LIN.C21	lesion	65.9	34	2.2406	male	77	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.78	75	23.7	4.92	3.39	1.08
+ERR2597019	LIN.C22	lesion	70.6	29	2.0474	male	59	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Positive	1.7	68	23.5	4.61	4.62	0.93
+ERR2597013	LIN.C24	lesion	71.1	25	1.7775	male	63	Intraepithelial neoplasia (IN)	Gastric low-grade IN		Negative	1.74	71	23.5	5.71	3.13	1.25
+ERR2597096	HIN.A01	gastric antrum	64.9	30	1.947	male	50	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.7	60	20.8	5.02	3.61	1.33
+ERR2597097	HIN.A03	gastric antrum	88.3	33	2.9139	male	60	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.7	66	22.8	5.27	3.64	1.22
+ERR2597038	HIN.A06	gastric antrum	86.5	34	2.941	female	70	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.55	52	21.6	5.7	3.23	0.62
+ERR2597094	HIN.A07	gastric antrum	82.6	29	2.3954	male	67	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.72	70	23.7	4.59	3.69	1.39
+ERR2597092	HIN.A08	gastric antrum	87.6	28	2.4528	female	64	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.69	67	23.5	5.04	3.48	0.87
+ERR2597008	HIN.A09	gastric antrum	81.4	31	2.5234	male	65	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.68	63	22.3	4.74	4.05	0.84
+ERR2597132	HIN.A10	gastric antrum	55.9	33	1.8447	male	62	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.7	65	22.5	4.91	3.77	1.22
+ERR2597130	HIN.A12	gastric antrum	54.8	26	1.4248	female	60	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.62	58	22.1	5.53	4.39	0.82
+ERR2597131	HIN.A13	gastric antrum	51.4	27	1.3878	male	48	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.73	70	23.4	4.82	4.03	0.91
+ERR2597135	HIN.A14	gastric antrum	50.6	28	1.4168	male	69	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.6	58	22.7	4.66	3.46	1.17
+ERR2597134	HIN.A17	gastric antrum	54.8	34	1.8632	male	53	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.8	77	23.8	4.79	3.22	0.64
+ERR2597127	HIN.A18	gastric antrum	80.8	29	2.3432	male	66	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.68	53	18.8	5.6	4.63	1.27
+ERR2597192	HIN.A20	gastric antrum	62.7	26	1.6302	male	56	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.65	60	22	4.58	4.67	0.85
+ERR2597158	HIN.A23	gastric antrum	52.5	28	1.47	male	59	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.75	70	22.9	4.78	3.39	1.01
+ERR2597180	HIN.A25	gastric antrum	53	27	1.431	male	54	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.71	70	23.9	3.77	3.22	0.68
+ERR2597167	HIN.B01	gastric body	57.8	29	1.6762	male	50	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.7	60	20.8	5.02	3.61	1.33
+ERR2597166	HIN.B03	gastric body	67	27	1.809	male	60	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.7	66	22.8	5.27	3.64	1.22
+ERR2597162	HIN.B06	gastric body	81.5	28	2.282	female	70	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.55	52	21.6	5.7	3.23	0.62
+ERR2597163	HIN.B07	gastric body	71.2	35	2.492	male	67	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.72	70	23.7	4.59	3.69	1.39
+ERR2597174	HIN.B08	gastric body	87.9	28	2.4612	female	64	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.69	67	23.5	5.04	3.48	0.87
+ERR2597175	HIN.B09	gastric body	65.3	25	1.6325	male	65	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.68	63	22.3	4.74	4.05	0.84
+ERR2597065	HIN.B10	gastric body	86.4	29	2.5056	male	62	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.7	65	22.5	4.91	3.77	1.22
+ERR2597201	HIN.B12	gastric body	64.2	35	2.247	female	60	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.62	58	22.1	5.53	4.39	0.82
+ERR2597086	HIN.B13	gastric body	78.9	28	2.2092	male	48	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.73	70	23.4	4.82	4.03	0.91
+ERR2597273	HIN.B14	gastric body	51.8	34	1.7612	male	69	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.6	58	22.7	4.66	3.46	1.17
+ERR2597156	HIN.B17	gastric body	77.6	33	2.5608	male	53	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.8	77	23.8	4.79	3.22	0.64
+ERR2597058	HIN.B18	gastric body	59.6	31	1.8476	male	66	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.68	53	18.8	5.6	4.63	1.27
+ERR2597023	HIN.B20	gastric body	59.3	27	1.6011	male	56	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.65	60	22	4.58	4.67	0.85
+ERR2597026	HIN.B23	gastric body	65.8	35	2.303	male	59	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.75	70	22.9	4.78	3.39	1.01
+ERR2597020	HIN.B25	gastric body	53.4	25	1.335	male	54	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.71	70	23.9	3.77	3.22	0.68
+ERR2597189	HIN.C01	lesion	55.5	33	1.8315	male	50	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.7	60	20.8	5.02	3.61	1.33
+ERR2597187	HIN.C03	lesion 	66.8	33	2.2044	male	60	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.7	66	22.8	5.27	3.64	1.22
+ERR2597184	HIN.C06	lesion 	57.9	26	1.5054	female	70	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.55	52	21.6	5.7	3.23	0.62
+ERR2597252	HIN.C07	lesion 	65.5	33	2.1615	male	67	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.72	70	23.7	4.59	3.69	1.39
+ERR2597249	HIN.C08	lesion 	73	34	2.482	female	64	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.69	67	23.5	5.04	3.48	0.87
+ERR2597245	HIN.C09	lesion 	77.6	30	2.328	male	65	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.68	63	22.3	4.74	4.05	0.84
+ERR2597227	HIN.C10	lesion 	56	27	1.512	male	62	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.7	65	22.5	4.91	3.77	1.22
+ERR2597228	HIN.C12	lesion 	61	32	1.952	female	60	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.62	58	22.1	5.53	4.39	0.82
+ERR2597229	HIN.C13	lesion 	71.8	29	2.0822	male	48	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.73	70	23.4	4.82	4.03	0.91
+ERR2597116	HIN.C14	lesion 	82.4	33	2.7192	male	69	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Negative	1.6	58	22.7	4.66	3.46	1.17
+ERR2597082	HIN.C17	lesion 	87.9	30	2.637	male	53	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.8	77	23.8	4.79	3.22	0.64
+ERR2597220	HIN.C18	lesion 	79.5	33	2.6235	male	66	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.68	53	18.8	5.6	4.63	1.27
+ERR2597093	HIN.C20	lesion 	50.1	27	1.3527	male	56	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.65	60	22	4.58	4.67	0.85
+ERR2597256	HIN.C23	lesion 	81.3	35	2.8455	male	59	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.75	70	22.9	4.78	3.39	1.01
+ERR2597257	HIN.C25	lesion 	51.2	29	1.4848	male	54	Intraepithelial neoplasia (IN)	Gastric high-grade IN		Positive	1.71	70	23.9	3.77	3.22	0.68
+ERR2597185	GC.A01	gastric antrum	63.7	31	1.9747	male	79	Gastric cancer (GC)	Cardia	Mixed type	Negative	1.78	62	19.6	3.44	3.89	0.73
+ERR2597183	GC.A03	gastric antrum	75.5	33	2.4915	male	31	Gastric cancer (GC)	Non-cardia	Intestinal type	Positive	1.8	72.5	22.4	5.11	4.43	1.02
+ERR2597190	GC.A04	gastric antrum	64.3	30	1.929	male	60	Gastric cancer (GC)	Cardia	Mixed type	Negative	1.75	66	21.6	4.88	4.11	1.13
+ERR2597262	GC.A05	gastric antrum	85	34	2.89	male	66	Gastric cancer (GC)	Cardia	Intestinal type	Negative	1.74	63	20.8	4.58	4.52	0.76
+ERR2597188	GC.A06	gastric antrum	70.5	28	1.974	male	68	Gastric cancer (GC)	Cardia	Mixed type	Positive	1.68	56	19.8	5.12	4.93	0.46
+ERR2597113	GC.A07	gastric antrum	70.6	33	2.3298	male	45	Gastric cancer (GC)	Non-cardia	Diffused type	Negative	1.73	68.5	22.9	5.54	4.19	1.08
+ERR2597233	GC.A08	gastric antrum	67.6	25	1.69	male	49	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.74	67	22.1	6.18	4.21	1.59
+ERR2597177	GC.A09	gastric antrum	58.1	29	1.6849	male	55	Gastric cancer (GC)	Cardia	Mixed type	Positive	1.76	69	22.3	5.33	3.55	1.22
+ERR2597145	GC.A10	gastric antrum	81.9	34	2.7846	female	59	Gastric cancer (GC)	Non-cardia	Intestinal type	Positive	1.66	64	23.2	4.71	3.89	1.67
+ERR2597146	GC.A11	gastric antrum	76.7	25	1.9175	female	46	Gastric cancer (GC)	Cardia	Mixed type	Positive	1.64	61	22.7	5.42	4.52	1.55
+ERR2597147	GC.A12	gastric antrum	59.3	25	1.4825	male	54	Gastric cancer (GC)	Cardia	Intestinal type	Positive	1.75	65	21.2	4.86	4.12	1.33
+ERR2597148	GC.A13	gastric antrum	74.3	31	2.3033	female	70	Gastric cancer (GC)	Non-cardia	Diffused type	Negative	1.55	48	20	4.54	3.99	1.22
+ERR2597141	GC.A14	gastric antrum	74.5	33	2.4585	female	38	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.6	60	23.4	4.82	3.87	1.11
+ERR2597142	GC.A15	gastric antrum	59.7	32	1.9104	male	68	Gastric cancer (GC)	Cardia	Intestinal type	Positive	1.72	67	22.6	4.57	4.59	1.44
+ERR2597143	GC.A16	gastric antrum	50.4	26	1.3104	male	34	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.7	67	23.2	5.02	3.44	1.21
+ERR2597144	GC.A17	gastric antrum	81.3	34	2.7642	female	46	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.62	62	23.6	5.22	4.12	0.98
+ERR2596983	GC.A18	gastric antrum	53.2	35	1.862	female	59	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.64	63.5	23.6	4.31	4.03	1.02
+ERR2597139	GC.A19	gastric antrum	62.4	26	1.6224	male	64	Gastric cancer (GC)	Non-cardia	Mixed type	Positive	1.77	70	22.3	5.31	3.78	0.67
+ERR2597098	GC.A21	gastric antrum	84	31	2.604	female	45	Gastric cancer (GC)	Cardia	Mixed type	Negative	1.66	63	22.9	5.99	4.43	1.34
+ERR2597075	GC.A22	gastric antrum	50.7	30	1.521	male	75	Gastric cancer (GC)	Cardia	Mixed type	Negative	1.78	64	20.2	4.32	3.61	0.66
+ERR2597099	GC.A23	gastric antrum	74.4	26	1.9344	female	62	Gastric cancer (GC)	Non-cardia	Diffused type	Negative	1.65	61	22.4	3.98	4.55	1.43
+ERR2597102	GC.A24	gastric antrum	89.5	30	2.685	female	33	Gastric cancer (GC)	Non-cardia	Mixed type	Positive	1.74	68	22.5	5.12	4.31	1.42
+ERR2597101	GC.A25	gastric antrum	71.3	26	1.8538	female	76	Gastric cancer (GC)	Non-cardia	Mixed type	Positive	1.63	62	23.3	4.99	3.74	0.75
+ERR2597104	GC.A26	gastric antrum	74.9	27	2.0223	male	58	Gastric cancer (GC)	Non-cardia	Mixed type	Negative	1.73	68	22.7	5.78	3.82	0.87
+ERR2597103	GC.A27	gastric antrum	79.7	35	2.7895	male	76	Gastric cancer (GC)	Non-cardia	Mixed type	Negative	1.7	60	20.8	5.44	3.67	0.59
+ERR2597254	GC.A28	gastric antrum	65.8	32	2.1056	male	64	Gastric cancer (GC)	Cardia	Mixed type	Negative	1.74	65	21.5	4.43	3.55	0.78
+ERR2597105	GC.A29	gastric antrum	71	34	2.414	female	43	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.63	62	23.3	3.45	4.01	1.01
+ERR2597204	GC.B01	gastric body	80.4	29	2.3316	male	79	Gastric cancer (GC)	Cardia	Mixed type	Negative	1.78	62	19.6	3.44	3.89	0.73
+ERR2597074	GC.B02	gastric body	64.8	35	2.268	male	64	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.76	63	20.3	4.67	4.02	0.88
+ERR2597149	GC.B03	gastric body	73.3	27	1.9791	male	31	Gastric cancer (GC)	Non-cardia	Intestinal type	Positive	1.8	72.5	22.4	5.11	4.43	1.02
+ERR2597076	GC.B04	gastric body	75.5	35	2.6425	male	60	Gastric cancer (GC)	Cardia	Mixed type	Negative	1.75	66	21.6	4.88	4.11	1.13
+ERR2597077	GC.B05	gastric body	50.9	29	1.4761	male	66	Gastric cancer (GC)	Cardia	Intestinal type	Negative	1.74	63	20.8	4.58	4.52	0.76
+ERR2597078	GC.B06	gastric body	63.7	35	2.2295	male	68	Gastric cancer (GC)	Cardia	Mixed type	Positive	1.68	56	19.8	5.12	4.93	0.46
+ERR2596997	GC.B07	gastric body	64.8	29	1.8792	male	45	Gastric cancer (GC)	Non-cardia	Diffused type	Negative	1.73	68.5	22.9	5.54	4.19	1.08
+ERR2597080	GC.B08	gastric body	60.5	33	1.9965	male	49	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.74	67	22.1	6.18	4.21	1.59
+ERR2597081	GC.B09	gastric body	56.6	33	1.8678	male	55	Gastric cancer (GC)	Cardia	Mixed type	Positive	1.76	69	22.3	5.33	3.55	1.22
+ERR2597123	GC.B10	gastric body	66.4	31	2.0584	female	59	Gastric cancer (GC)	Non-cardia	Intestinal type	Positive	1.66	64	23.2	4.71	3.89	1.67
+ERR2597122	GC.B11	gastric body	79.9	33	2.6367	female	46	Gastric cancer (GC)	Cardia	Mixed type	Positive	1.64	61	22.7	5.42	4.52	1.55
+ERR2597121	GC.B12	gastric body	59.6	30	1.788	male	54	Gastric cancer (GC)	Cardia	Intestinal type	Positive	1.75	65	21.2	4.86	4.12	1.33
+ERR2597161	GC.B13	gastric body	75.8	35	2.653	female	70	Gastric cancer (GC)	Non-cardia	Diffused type	Negative	1.55	48	20	4.54	3.99	1.22
+ERR2597119	GC.B14	gastric body	53.7	32	1.7184	female	38	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.6	60	23.4	4.82	3.87	1.11
+ERR2597155	GC.B15	gastric body	67	29	1.943	male	68	Gastric cancer (GC)	Cardia	Intestinal type	Positive	1.72	67	22.6	4.57	4.59	1.44
+ERR2597117	GC.B16	gastric body	65.5	30	1.965	male	34	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.7	67	23.2	5.02	3.44	1.21
+ERR2597115	GC.B18	gastric body	80.9	29	2.3461	female	59	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.64	63.5	23.6	4.31	4.03	1.02
+ERR2597114	GC.B19	gastric body	63.5	25	1.5875	male	64	Gastric cancer (GC)	Non-cardia	Mixed type	Positive	1.77	70	22.3	5.31	3.78	0.67
+ERR2597021	GC.B20	gastric body	73	31	2.263	male	76	Gastric cancer (GC)	Non-cardia	Diffused type	Negative	1.72	67	22.6	4.15	3.82	1.04
+ERR2596981	GC.B21	gastric body	85.9	29	2.4911	female	45	Gastric cancer (GC)	Cardia	Mixed type	Negative	1.66	63	22.9	5.99	4.43	1.34
+ERR2597052	GC.B22	gastric body	85.2	29	2.4708	male	75	Gastric cancer (GC)	Cardia	Mixed type	Negative	1.78	64	20.2	4.32	3.61	0.66
+ERR2596979	GC.B23	gastric body	58.6	34	1.9924	female	62	Gastric cancer (GC)	Non-cardia	Diffused type	Negative	1.65	61	22.4	3.98	4.55	1.43
+ERR2597043	GC.B24	gastric body	81.6	32	2.6112	female	33	Gastric cancer (GC)	Non-cardia	Mixed type	Positive	1.74	68	22.5	5.12	4.31	1.42
+ERR2597055	GC.B25	gastric body	74.4	25	1.86	female	76	Gastric cancer (GC)	Non-cardia	Mixed type	Positive	1.63	62	23.3	4.99	3.74	0.75
+ERR2597037	GC.B26	gastric body	78.6	26	2.0436	male	58	Gastric cancer (GC)	Non-cardia	Mixed type	Negative	1.73	68	22.7	5.78	3.82	0.87
+ERR2597253	GC.B27	gastric body	89.5	30	2.685	male	76	Gastric cancer (GC)	Non-cardia	Mixed type	Negative	1.7	60	20.8	5.44	3.67	0.59
+ERR2596988	GC.B28	gastric body	79.1	35	2.7685	male	64	Gastric cancer (GC)	Cardia	Mixed type	Negative	1.74	65	21.5	4.43	3.55	0.78
+ERR2596989	GC.B29	gastric body	75.9	33	2.5047	female	43	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.63	62	23.3	3.45	4.01	1.01
+ERR2596982	GC.C01	lesion 	64.6	28	1.8088	male	79	Gastric cancer (GC)	Cardia	Mixed type	Negative	1.78	62	19.6	3.44	3.89	0.73
+ERR2596985	GC.C02	lesion 	85.5	34	2.907	male	64	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.76	63	20.3	4.67	4.02	0.88
+ERR2596984	GC.C03	lesion 	58.4	25	1.46	male	31	Gastric cancer (GC)	Non-cardia	Intestinal type	Positive	1.8	72.5	22.4	5.11	4.43	1.02
+ERR2596987	GC.C04	lesion 	69.2	28	1.9376	male	60	Gastric cancer (GC)	Cardia	Mixed type	Negative	1.75	66	21.6	4.88	4.11	1.13
+ERR2597088	GC.C05	lesion 	66.1	31	2.0491	male	66	Gastric cancer (GC)	Cardia	Intestinal type	Negative	1.74	63	20.8	4.58	4.52	0.76
+ERR2597042	GC.C06	lesion 	89.6	25	2.24	male	68	Gastric cancer (GC)	Cardia	Mixed type	Positive	1.68	56	19.8	5.12	4.93	0.46
+ERR2596973	GC.C07	lesion 	51.3	31	1.5903	male	45	Gastric cancer (GC)	Non-cardia	Diffused type	Negative	1.73	68.5	22.9	5.54	4.19	1.08
+ERR2597041	GC.C08	lesion 	58.9	32	1.8848	male	49	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.74	67	22.1	6.18	4.21	1.59
+ERR2596974	GC.C09	lesion 	62.5	32	2	male	55	Gastric cancer (GC)	Cardia	Mixed type	Positive	1.76	69	22.3	5.33	3.55	1.22
+ERR2597265	GC.C10	lesion 	83.1	28	2.3268	female	59	Gastric cancer (GC)	Non-cardia	Intestinal type	Positive	1.66	64	23.2	4.71	3.89	1.67
+ERR2597266	GC.C11	lesion 	71.7	33	2.3661	female	46	Gastric cancer (GC)	Cardia	Mixed type	Positive	1.64	61	22.7	5.42	4.52	1.55
+ERR2597263	GC.C12	lesion 	51.5	30	1.545	male	54	Gastric cancer (GC)	Cardia	Intestinal type	Positive	1.75	65	21.2	4.86	4.12	1.33
+ERR2597264	GC.C13	lesion 	81.3	33	2.6829	female	70	Gastric cancer (GC)	Non-cardia	Diffused type	Negative	1.55	48	20	4.54	3.99	1.22
+ERR2597269	GC.C14	lesion 	83.7	29	2.4273	female	38	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.6	60	23.4	4.82	3.87	1.11
+ERR2597128	GC.C15	lesion 	53	30	1.59	male	68	Gastric cancer (GC)	Cardia	Intestinal type	Positive	1.72	67	22.6	4.57	4.59	1.44
+ERR2597267	GC.C16	lesion 	56.8	30	1.704	male	34	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.7	67	23.2	5.02	3.44	1.21
+ERR2597268	GC.C17	lesion 	55.2	26	1.4352	female	46	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.62	62	23.6	5.22	4.12	0.98
+ERR2597260	GC.C18	lesion 	63.6	30	1.908	female	59	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.64	63.5	23.6	4.31	4.03	1.02
+ERR2597261	GC.C19	lesion 	84.5	30	2.535	male	64	Gastric cancer (GC)	Non-cardia	Mixed type	Positive	1.77	70	22.3	5.31	3.78	0.67
+ERR2597060	GC.C20	lesion 	87.4	35	3.059	male	76	Gastric cancer (GC)	Non-cardia	Diffused type	Negative	1.72	67	22.6	4.15	3.82	1.04
+ERR2597059	GC.C21	lesion 	89.3	28	2.5004	female	45	Gastric cancer (GC)	Cardia	Mixed type	Negative	1.66	63	22.9	5.99	4.43	1.34
+ERR2597140	GC.C22	lesion 	69.9	25	1.7475	male	75	Gastric cancer (GC)	Cardia	Mixed type	Negative	1.78	64	20.2	4.32	3.61	0.66
+ERR2597057	GC.C23	lesion 	69.6	27	1.8792	female	62	Gastric cancer (GC)	Non-cardia	Diffused type	Negative	1.65	61	22.4	3.98	4.55	1.43
+ERR2597064	GC.C24	lesion 	85	26	2.21	female	33	Gastric cancer (GC)	Non-cardia	Mixed type	Positive	1.74	68	22.5	5.12	4.31	1.42
+ERR2597063	GC.C25	lesion 	59.1	33	1.9503	female	76	Gastric cancer (GC)	Non-cardia	Mixed type	Positive	1.63	62	23.3	4.99	3.74	0.75
+ERR2597157	GC.C26	lesion 	60.4	30	1.812	male	58	Gastric cancer (GC)	Non-cardia	Mixed type	Negative	1.73	68	22.7	5.78	3.82	0.87
+ERR2597061	GC.C27	lesion 	88.4	28	2.4752	male	76	Gastric cancer (GC)	Non-cardia	Mixed type	Negative	1.7	60	20.8	5.44	3.67	0.59
+ERR2597178	GC.C28	lesion 	64.6	28	1.8088	male	64	Gastric cancer (GC)	Cardia	Mixed type	Negative	1.74	65	21.5	4.43	3.55	0.78
+ERR2597067	GC.C29	lesion 	54.1	29	1.5689	female	43	Gastric cancer (GC)	Non-cardia	Diffused type	Positive	1.63	62	23.3	3.45	4.01	1.01
