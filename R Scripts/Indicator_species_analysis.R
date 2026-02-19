@@ -10,8 +10,15 @@ library(indicspecies)
 # Load object
 ps = readRDS('Datasets/phyloseq_taxonomy.rds')
 
+# Aggregate ASVs to the genus level
+# convert phyloseq to relative abundance 
+#apply abundance filter
+ps_genus = tax_glom(ps,'Genus')
+ps_relab = transform_sample_counts(ps_genus, function(x) x / sum(x))
+ps_filt = filter_taxa(ps_relab, function(x) mean(x) > 0.001, TRUE)
+otu_table = data.frame(otu_table(ps_filt))
 
-# Indicator species analysis -------------------------
+# Indicator species analysis - Stratified by Gastric Disease Stage only -------------------------
 
 # Aggregate ASVs to the genus level
 ps_genus = tax_glom(ps,'Genus')
