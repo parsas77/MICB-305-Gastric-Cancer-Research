@@ -30,12 +30,6 @@ ps = phyloseq(sample_data(metadata),
               tax_table(taxonomy_formatted),
               tree)
 
-# Save as .rds or .Rdata object  
-saveRDS(ps,'Datasets/phyloseq_taxonomy.rds')
-
-# Load object
-ps = readRDS('Datasets/phyloseq_taxonomy.rds')
-
 
 # Differential abundance analysis -------------------------
 
@@ -134,7 +128,7 @@ intraepithelial_neoplasia_taxa <- intraepithelial_neoplasia_statistical_table %>
 
 # Plot the log 2 fold changes of differential abundance of intraepithelial neoplasia (male relative
 # to female) 
-intraepithelial_neoplasia_taxa_plot %>%
+intraepithelial_neoplasia_plot <- intraepithelial_neoplasia_taxa%>%
   mutate(
     Genus = as.character(tax_table(ps_genus)[taxon, "Genus"]),
     Genus = str_replace_all(Genus, "g__", "")
