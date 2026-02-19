@@ -142,7 +142,7 @@ intraepithelial_neoplasia_plot <- intraepithelial_neoplasia_taxa%>%
     title = "Differential Abundance (Intraepithelial Neoplasia)"
   )
 
-
+intraepithelial_neoplasia_plot
 
 
 # 5) Gastric cancer only: Male vs Female
@@ -161,5 +161,10 @@ gastric_cancer_statistical_table = gastric_cancer_out$res
 ## NO SIGNIFANCE BETWEEN MALE AND FEMALE GC GROUPS
 
 
+# Save plot to GitHub results folder
+ggsave("Results/Plots/IN_Genus_Differential_Abundance_Male_vs_Female.png",
+       intraepithelial_neoplasia_plot,
+       width = 10,
+       height = 6)
 
 
