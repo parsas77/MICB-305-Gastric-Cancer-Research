@@ -51,6 +51,10 @@ beta_diversity_plot
 # variable is pulling a lot weight (i.e., driving overall microbiome variation)
 
 # Saving the Plot!
+ggsave("Results/Plots/beta_diversity_bray-curtis.png",
+       beta_diversity_plot,
+       width= 10,
+       height = 10)
 
 
 
