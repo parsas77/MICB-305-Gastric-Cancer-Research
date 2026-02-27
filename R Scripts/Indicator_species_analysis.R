@@ -1,6 +1,5 @@
 # In this script, we will run
 # 1. Indicator Taxa 
-# 2. Differential abundance analysis 
 
 # Load necessary libraries 
 library(tidyverse)
@@ -94,7 +93,8 @@ ggsave("Results/Plots/Ind_Genus_Disease_Stage_nosex.png",
        width= 10,
        height = 10)
 
-# Indicator species analysis - Stratified by Gastric Disease Stage only -------------------------
+# Indicator species analysis - Sex comparison between each gastric disease stage  -------------------------
+
 run_indval <- function(ps_obj, otu_table, seed = 520, cat) {
   set.seed(520)
   indval = multipatt(t(otu_table), 
@@ -179,3 +179,114 @@ ggsave("Results/Plots/Ind_Genus_Disease_Stage_Male.png",
        dotplot,
        width= 10,
        height = 10)
+
+
+# Indicator species analysis - Comparison between sex at each stage  -------------------------
+# No significant indicator taxa between male and female for all 4 stages except for IN
+
+run_indval <- function(ps_obj, otu_table, seed = 520, cat) {
+  set.seed(520)
+  indval = multipatt(t(otu_table), 
+                     cluster= ps_obj@sam_data$Gender,
+                     control = how(nperm = 999))
+  
+  indval_table = as.data.frame(indval$sign) %>%
+    filter(stat> 0.7 & p.value < 0.05)
+  genus_map <- tax_table(ps_obj) %>%
+    as("matrix") %>%
+    as.data.frame() %>%
+    rownames_to_column("taxa_id") %>%
+    transmute(taxa_id, Genus = as.character(Genus))
+  # attach taxa_id from rownames + genus
+  indval_table_genus <- indval_table %>%
+    rownames_to_column("taxa_id") %>%
+    left_join(genus_map, by = "taxa_id") %>%
+    mutate(Genus = if_else(is.na(Genus) | Genus == "", taxa_id, Genus))
+  
+  indval_long <- indval_table_genus  %>%
+    pivot_longer(
+      cols = starts_with("s."),
+      names_to = "Biological_Sex",
+      values_to = "member"
+    ) %>%
+    filter(member == 1)%>%
+    mutate(
+      Genus = str_replace_all(Genus, "g__", ""),
+      Biological_Sex = substr(Biological_Sex, 3, nchar(Biological_Sex))) %>%
+    mutate(Biological_Sex = factor(Biological_Sex,
+                                   levels = c("male",
+                                              "female")))
+  
+  plot_df <- indval_long %>%
+    group_by(Biological_Sex) %>%
+    slice_max(stat, n = 10, with_ties = FALSE) %>%
+    ungroup()
+  
+  dotplot <- ggplot(plot_df, aes(
+    x = Biological_Sex,
+    y = fct_reorder(Genus, stat)
+  )) +
+    geom_point(aes(size = stat, color = Biological_Sex,)) +
+    scale_size_continuous(range = c(2, 7)) +
+    scale_alpha_continuous(range = c(0.4, 1), name = "-log10(p) (capped)") +
+    labs(x = NULL, y = "Genus", size = "IndVal stat", color = "Biological Sex") +
+    ggtitle(paste("Indicator Genus for Sex", "-", cat))+
+    theme_bw() +
+    theme(
+      axis.text.y = element_text(size = 9),
+      axis.text.x = element_text(angle = 25, hjust = 1),
+      panel.grid.minor = element_blank()
+    )
+  dotplot
+}
+
+
+hc <- subset_samples(ps_filt, Group == "Healthy control (HC)")
+otu_table_hc = data.frame(otu_table(hc))
+
+dotplot <- run_indval(hc, 
+                      otu_table_hc, 
+                      seed = 520, 
+                      cat = "Healthy control") 
+dotplot
+
+CG <- subset_samples(ps_filt, Group == "Chronic gastritis (CG)")
+otu_table_CG = data.frame(otu_table(CG))
+
+dotplot <- run_indval(CG, 
+                      otu_table_CG, 
+                      seed = 520, 
+                      cat = "Chronic gastritis (CG)") 
+dotplot
+
+IM <- subset_samples(ps_filt, Group == "Intestinal metaplasia (IM）")
+otu_table_IM = data.frame(otu_table(IM))
+
+dotplot <- run_indval(IM, 
+                      otu_table_IM, 
+                      seed = 520, 
+                      cat = "Intestinal metaplasia") 
+dotplot
+
+IN <- subset_samples(ps_filt, Group == "Intraepithelial neoplasia (IN)")
+otu_table_IN = data.frame(otu_table(IN))
+
+dotplot <- run_indval(IN, 
+                      otu_table_IN, 
+                      seed = 520, 
+                      cat = "Intraepithelial neoplasia (IN)") 
+dotplot
+
+ggsave("Results/Plots/IN_Ind_Genus_Disease_Stage.png",
+       dotplot,
+       width= 10,
+       height = 10)
+
+GC <- subset_samples(ps_filt, Group == "Gastric cancer (GC)")
+otu_table_GC = data.frame(otu_table(GC))
+
+dotplot <- run_indval(GC, 
+                      otu_table_GC, 
+                      seed = 520, 
+                      cat = "Gastric cancer (GC)") 
+dotplot
