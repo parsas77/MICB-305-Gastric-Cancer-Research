@@ -1,0 +1,366 @@
+---
+title: "Project"
+output: html_document
+---
+
+```{r libraries, include=FALSE}
+library(tidyverse)
+library(phyloseq)
+library(ggpicrust2)
+library(GGally)
+```
+
+## Load physloseq and rarefaction
+
+```{r load_data}
+meta = readRDS("ps.rds") %>%
+  .@sam_data %>% data.frame() %>%
+  rownames_to_column("sample_name")
+
+ko = read.delim("pred_metagenome_unstrat.tsv", row.names=1)
+
+```
+
+# Differential Analysis (male)
+
+```{r}
+male_meta = meta %>%
+  filter(Gender == "male")
+
+#HC to CG
+
+HC_CG = male_meta %>% filter(Group %in% c("Healthy control (HC)", "Chronic gastritis (CG)"))
+
+ko_filt_CG = ko %>% select(all_of(HC_CG$sample_name))
+
+daa_results_df_CG = pathway_daa(abundance = ko_filt_CG,
+                             metadata = HC_CG,
+                             group = "Group",
+                             daa_method = "LinDA",
+                             select = NULL, reference = NULL)
+
+daa_annotated_results_df_CG = pathway_annotation(pathway = "KO",
+                                              daa_results_df = daa_results_df_CG,
+                                              ko_to_kegg = TRUE)
+
+saveRDS(daa_annotated_results_df_CG, "daa_annotated_results_df_CG_group.rds")
+daa_annotated_results_df_GC = read_rds("daa_annotated_results_df_CG_group.rds")
+
+
+#HC to IM
+
+HC_IM = male_meta %>% filter(Group %in% c("Healthy control (HC)", "Intestinal metaplasia (IM）"))
+
+ko_filt_IM = ko %>% select(all_of(HC_IM$sample_name))
+
+daa_results_df_IM = pathway_daa(abundance = ko_filt_IM,
+                             metadata = HC_IM,
+                             group = "Group",
+                             daa_method = "LinDA",
+                             select = NULL, reference = NULL)
+
+daa_annotated_results_df_IM = pathway_annotation(pathway = "KO",
+                                              daa_results_df = daa_results_df_IM,
+                                              ko_to_kegg = TRUE)
+
+saveRDS(daa_annotated_results_df_IM, "daa_annotated_results_df_IM_group.rds")
+daa_annotated_results_df_IM = read_rds("daa_annotated_results_df_IM_group.rds")
+
+
+#HC to IN
+
+HC_IN = male_meta %>% filter(Group %in% c("Healthy control (HC)", "Intraepithelial neoplasia (IN)"))
+
+ko_filt_IN = ko %>% select(all_of(HC_IN$sample_name))
+
+daa_results_df_IN = pathway_daa(abundance = ko_filt_IN,
+                             metadata = HC_IN,
+                             group = "Group",
+                             daa_method = "LinDA",
+                             select = NULL, reference = NULL)
+
+daa_annotated_results_df_IN = pathway_annotation(pathway = "KO",
+                                              daa_results_df = daa_results_df_IN,
+                                              ko_to_kegg = TRUE)
+
+saveRDS(daa_annotated_results_df_IN, "daa_annotated_results_df_IN_group.rds")
+daa_annotated_results_df_IN = read_rds("daa_annotated_results_df_IN_group.rds")
+
+#HC to GC
+
+HC_GC = male_meta %>% filter(Group %in% c("Healthy control (HC)", "Gastric cancer (GC)"))
+
+ko_filt_GC = ko %>% select(all_of(HC_GC$sample_name))
+
+daa_results_df_GC = pathway_daa(abundance = ko_filt_GC,
+                             metadata = HC_GC,
+                             group = "Group",
+                             daa_method = "LinDA",
+                             select = NULL, reference = NULL)
+
+daa_annotated_results_df_GC = pathway_annotation(pathway = "KO",
+                                              daa_results_df = daa_results_df_GC,
+                                              ko_to_kegg = TRUE)
+
+saveRDS(daa_annotated_results_df_GC, "daa_annotated_results_df_GC_group.rds")
+daa_annotated_results_df_GC = read_rds("daa_annotated_results_df_GC_group.rds")
+
+
+```
+
+# Functional Analysis Graphs (male)
+
+```{r}
+source("ggpicrust2_errorbar_function_fixed.R")
+
+# CG graph
+daa_annotated_results_df_CG_sig = daa_annotated_results_df_CG %>% 
+  filter( p_adjust<0.000005 & abs(log2_fold_change >= 5))
+
+nrow(daa_annotated_results_df_CG_sig)
+
+CG_graph = pathway_errorbar_fixed(abundance = ko_filt_CG,
+                                  daa_results_df = daa_annotated_results_df_CG_sig,
+                                  Group = HC_CG$Group,
+                                  p_values_threshold = 0.000005,
+                                  wrap_label = T, wraplength = 300,
+                                  order_by_log = F,
+                                  order = "pathway_class",
+                                  ko_to_kegg = TRUE,
+                                  p_value_bar = TRUE,
+                                  x_lab = "pathway_name")
+
+ggsave("HC_CG male graph final.png", plot=CG_graph, width =25, height = 16)
+
+# IM graph
+daa_annotated_results_df_IM_sig = daa_annotated_results_df_IM %>% 
+  filter( p_adjust<=0.000005 & abs(log2_fold_change >= 4))
+
+nrow(daa_annotated_results_df_IM_sig)
+
+IM_graph = pathway_errorbar_fixed(abundance = ko_filt_IM,
+                                  daa_results_df = daa_annotated_results_df_IM_sig,
+                                  Group = HC_IM$Group,
+                                  p_values_threshold = 0.000005,
+                                  wrap_label = T, wraplength = 300,
+                                  order_by_log = F,
+                                  order = "pathway_class",
+                                  ko_to_kegg = TRUE,
+                                  p_value_bar = TRUE,
+                                  x_lab = "pathway_name")
+
+ggsave("HC_IM male graph final.png", plot=IM_graph, width =25, height = 16)
+
+
+# IN graph
+daa_annotated_results_df_IN_sig = daa_annotated_results_df_IN %>% 
+  filter( p_adjust<=0.000005 & abs(log2_fold_change >= 5.5))
+
+nrow(daa_annotated_results_df_IN_sig)
+
+IN_graph = pathway_errorbar_fixed(abundance = ko_filt_IN,
+                                  daa_results_df = daa_annotated_results_df_IN_sig,
+                                  Group = HC_IN$Group,
+                                  p_values_threshold = 0.000005,
+                                  wrap_label = T, wraplength = 300,
+                                  order_by_log = F,
+                                  order = "pathway_class",
+                                  ko_to_kegg = TRUE,
+                                  p_value_bar = TRUE,
+                                  x_lab = "pathway_name")
+
+ggsave("HC_IN male graph final.png", plot=IN_graph, width =25, height = 14)
+
+# GC graph
+daa_annotated_results_df_GC_sig = daa_annotated_results_df_GC %>% 
+  filter( p_adjust<=0.000005 & abs(log2_fold_change >= 6))
+
+nrow(daa_annotated_results_df_GC_sig)
+
+GC_graph = pathway_errorbar_fixed(abundance = ko_filt_GC,
+                                  daa_results_df = daa_annotated_results_df_GC_sig,
+                                  Group = HC_GC$Group,
+                                  p_values_threshold = 0.000005,
+                                  wrap_label = T, wraplength = 300,
+                                  order_by_log = F,
+                                  order = "pathway_class",
+                                  ko_to_kegg = TRUE,
+                                  p_value_bar = TRUE,
+                                  x_lab = "pathway_name")
+
+ggsave("HC_GC male graph final.png", plot=GC_graph, width =25, height = 16)
+
+```
+# Differential Analysis (female)
+
+```{r}
+female_meta = meta %>%
+  filter(Gender == "female")
+
+#HC to CG
+
+HC_CG_f = female_meta %>% filter(Group %in% c("Healthy control (HC)", "Chronic gastritis (CG)"))
+
+ko_filt_CG_f = ko %>% select(all_of(HC_CG_f$sample_name))
+
+daa_results_df_CG_f = pathway_daa(abundance = ko_filt_CG_f,
+                             metadata = HC_CG_f,
+                             group = "Group",
+                             daa_method = "LinDA",
+                             select = NULL, reference = NULL)
+
+daa_annotated_results_df_CG_f = pathway_annotation(pathway = "KO",
+                                              daa_results_df = daa_results_df_CG_f,
+                                              ko_to_kegg = TRUE)
+
+saveRDS(daa_annotated_results_df_CG_f, "daa_annotated_results_df_CG_group_f.rds")
+daa_annotated_results_df_CG_f = read_rds("daa_annotated_results_df_CG_group_f.rds")
+
+
+#HC to IM
+
+HC_IM_f = female_meta %>% filter(Group %in% c("Healthy control (HC)", "Intestinal metaplasia (IM）"))
+
+ko_filt_IM_f = ko %>% select(all_of(HC_IM_f$sample_name))
+
+daa_results_df_IM_f = pathway_daa(abundance = ko_filt_IM_f,
+                             metadata = HC_IM_f,
+                             group = "Group",
+                             daa_method = "LinDA",
+                             select = NULL, reference = NULL)
+
+daa_annotated_results_df_IM_f = pathway_annotation(pathway = "KO",
+                                              daa_results_df = daa_results_df_IM_f,
+                                              ko_to_kegg = TRUE)
+
+saveRDS(daa_annotated_results_df_IM_f, "daa_annotated_results_df_IM_group_f.rds")
+daa_annotated_results_df_IM_f = read_rds("daa_annotated_results_df_IM_group_f.rds")
+
+
+#HC to IN
+
+HC_IN_f = female_meta %>% filter(Group %in% c("Healthy control (HC)", "Intraepithelial neoplasia (IN)"))
+
+ko_filt_IN_f = ko %>% select(all_of(HC_IN_f$sample_name))
+
+daa_results_df_IN_f = pathway_daa(abundance = ko_filt_IN_f,
+                             metadata = HC_IN_f,
+                             group = "Group",
+                             daa_method = "LinDA",
+                             select = NULL, reference = NULL)
+
+daa_annotated_results_df_IN_f = pathway_annotation(pathway = "KO",
+                                              daa_results_df = daa_results_df_IN_f,
+                                              ko_to_kegg = TRUE)
+
+saveRDS(daa_annotated_results_df_IN, "daa_annotated_results_df_IN_group_f.rds")
+daa_annotated_results_df_IN_f = read_rds("daa_annotated_results_df_IN_group_f.rds")
+
+#HC to GC
+
+HC_GC_f = female_meta %>% filter(Group %in% c("Healthy control (HC)", "Gastric cancer (GC)"))
+
+ko_filt_GC_f = ko %>% select(all_of(HC_GC_f$sample_name))
+
+daa_results_df_GC_f = pathway_daa(abundance = ko_filt_GC_f,
+                             metadata = HC_GC_f,
+                             group = "Group",
+                             daa_method = "LinDA",
+                             select = NULL, reference = NULL)
+
+daa_annotated_results_df_GC_f = pathway_annotation(pathway = "KO",
+                                              daa_results_df = daa_results_df_GC_f,
+                                              ko_to_kegg = TRUE)
+
+saveRDS(daa_annotated_results_df_GC_f, "daa_annotated_results_df_GC_group_f.rds")
+daa_annotated_results_df_GC_f = read_rds("daa_annotated_results_df_GC_group_f.rds")
+
+
+```
+
+# Functional Analysis Graphs (female)
+
+```{r}
+source("ggpicrust2_errorbar_function_fixed.R")
+
+# CG graph
+daa_annotated_results_df_CG_sig_f = daa_annotated_results_df_CG_f %>% 
+  filter( p_adjust<0.000005 & abs(log2_fold_change >= 5.7))
+
+nrow(daa_annotated_results_df_CG_sig_f)
+
+CG_graph_f = pathway_errorbar_fixed(abundance = ko_filt_CG_f,
+                                  daa_results_df = daa_annotated_results_df_CG_sig_f,
+                                  Group = HC_CG_f$Group,
+                                  p_values_threshold = 0.000005,
+                                  wrap_label = T, wraplength = 300,
+                                  order_by_log = F,
+                                  order = "pathway_class",
+                                  ko_to_kegg = TRUE,
+                                  p_value_bar = TRUE,
+                                  x_lab = "pathway_name")
+
+ggsave("HC_CG female graph final.png", plot=CG_graph_f, width =25, height = 15)
+
+# IM graph
+daa_annotated_results_df_IM_sig_f = daa_annotated_results_df_IM_f %>% 
+  filter( p_adjust<=0.000005 & abs(log2_fold_change >= 4.8))
+
+nrow(daa_annotated_results_df_IM_sig_f)
+
+IM_graph_f = pathway_errorbar_fixed(abundance = ko_filt_IM_f,
+                                  daa_results_df = daa_annotated_results_df_IM_sig_f,
+                                  Group = HC_IM_f$Group,
+                                  p_values_threshold = 0.000005,
+                                  wrap_label = T, wraplength = 300,
+                                  order_by_log = F,
+                                  order = "pathway_class",
+                                  ko_to_kegg = TRUE,
+                                  p_value_bar = TRUE,
+                                  x_lab = "pathway_name")
+
+ggsave("HC_IM female graph final.png", plot=IM_graph_f, width =25, height = 16)
+
+
+# IN graph
+daa_annotated_results_df_IN_sig_f = daa_annotated_results_df_IN_f %>% 
+  filter( p_adjust<=0.000005 & abs(log2_fold_change >= 6.5))
+
+nrow(daa_annotated_results_df_IN_sig_f)
+
+IN_graph_f = pathway_errorbar_fixed(abundance = ko_filt_IN_f,
+                                  daa_results_df = daa_annotated_results_df_IN_sig_f,
+                                  Group = HC_IN_f$Group,
+                                  p_values_threshold = 0.000005,
+                                  wrap_label = T, wraplength = 500,
+                                  order_by_log = F,
+                                  order = "pathway_class",
+                                  ko_to_kegg = TRUE,
+                                  p_value_bar = TRUE,
+                                  x_lab = "pathway_name")
+
+ggsave("HC_IN female graph final.png", plot=IN_graph_f, width =25, height = 14)
+
+# GC graph
+daa_annotated_results_df_GC_sig_f = daa_annotated_results_df_GC_f %>% 
+  filter( p_adjust<=0.000005 & abs(log2_fold_change >= 6.85))
+
+nrow(daa_annotated_results_df_GC_sig_f)
+
+GC_graph_f = pathway_errorbar_fixed(abundance = ko_filt_GC_f,
+                                  daa_results_df = daa_annotated_results_df_GC_sig_f,
+                                  Group = HC_GC_f$Group,
+                                  p_values_threshold = 0.000005,
+                                  wrap_label = T, wraplength = 300,
+                                  order_by_log = F,
+                                  order = "pathway_class",
+                                  ko_to_kegg = TRUE,
+                                  p_value_bar = TRUE,
+                                  x_lab = "pathway_name")
+
+ggsave("HC_GC female graph final.png", plot=GC_graph_f, width =25, height = 16)
+
+```
+
+
+

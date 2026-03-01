@@ -14,7 +14,6 @@ library(GGally)
 
 ```{r load_data}
 meta = readRDS("ps.rds") %>%
-  rarefy_even_depth(sample.size = 8000, rngseed = 777) %>%
   .@sam_data %>% data.frame() %>%
   rownames_to_column("sample_name")
 
@@ -125,25 +124,29 @@ daa_annotated_results_df_GC = read_rds("daa_annotated_results_df_GC.rds")
 ```{r}
 source("ggpicrust2_errorbar_function_fixed.R")
 
-# HC graph
+# HC graph - no significance
 daa_annotated_results_df_HC_sig = daa_annotated_results_df_HC %>% 
-  filter( p_adjust<0.95 & abs(log2_fold_change >= 1.80))
+    drop_na() %>%
+  filter( p_adjust<4 & abs(log2_fold_change >= 1))
 
-HC_graph = pathway_errorbar_fixed(abundance = ko_filt_HC,
-                                  daa_results_df = daa_annotated_results_df_HC_sig,
-                                  Group = HC_difference$Gender,
-                                  p_values_threshold = 0.95,
-                                  wrap_label = T, wraplength = 50,
-                                  order_by_log = F,
-                                  order = "pathway_class",
-                                  ko_to_kegg = TRUE,
-                                  p_value_bar = TRUE,
-                                  x_lab = "pathway_name")
+nrow(daa_annotated_results_df_HC_sig)
+summary(daa_annotated_results_df_HC)
+
+# HC_graph = pathway_errorbar_fixed(abundance = ko_filt_HC,
+ #                                 daa_results_df = daa_annotated_results_df_HC_sig,
+  #                                Group = HC_difference$Gender,
+     #                             p_values_threshold = 0.7,
+   #                               wrap_label = T, wraplength = 50,
+     #                             order_by_log = F,
+        #                          order = "pathway_class",
+       #                           ko_to_kegg = TRUE,
+         #                         p_value_bar = TRUE,
+       #                           x_lab = "pathway_name")
 
 
 # CG graph
 daa_annotated_results_df_CG_sig = daa_annotated_results_df_CG %>% 
-  filter( p_adjust<=0.05 & abs(log2_fold_change >= 1.25))
+  filter( p_adjust<=0.05 & abs(log2_fold_change >= 2.15))
 
 nrow(daa_annotated_results_df_CG_sig)
 
@@ -151,7 +154,7 @@ CG_graph = pathway_errorbar_fixed(abundance = ko_filt_CG,
                                   daa_results_df = daa_annotated_results_df_CG_sig,
                                   Group = CG_difference$Gender,
                                   p_values_threshold = 0.05,
-                                  wrap_label = T, wraplength = 50,
+                                  wrap_label = T, wraplength = 250,
                                   order_by_log = F,
                                   order = "pathway_class",
                                   ko_to_kegg = TRUE,
@@ -162,12 +165,10 @@ CG_graph
 ggsave("CG graph final.png", plot=CG_graph, width =20, height = 16)
 
 
-# IM graph
+# IM graph - no significance
 daa_annotated_results_df_IM_sig = daa_annotated_results_df_IM %>% 
   filter( p_adjust<=0.1 & abs(log2_fold_change >= 1.25))
 
-nrow(daa_annotated_results_df_IM_sig)
-summary(daa_annotated_results_df_IM)
 
 IM_graph = pathway_errorbar_fixed(abundance = ko_filt_IM,
                                   daa_results_df = daa_annotated_results_df_IM_sig,
@@ -183,9 +184,9 @@ IM_graph = pathway_errorbar_fixed(abundance = ko_filt_IM,
 IM_graph
 ggsave("IM graph final.png", plot=IM_graph, width =20, height = 16)
 
-# IN graph
+# IN graph 
 daa_annotated_results_df_IN_sig = daa_annotated_results_df_IN %>% 
-  filter( p_adjust<=0.005 & abs(log2_fold_change >= 3.1))
+  filter( p_adjust<=0.005 & abs(log2_fold_change >= 3.3))
 
 nrow(daa_annotated_results_df_IN_sig)
 
@@ -193,7 +194,7 @@ IN_graph = pathway_errorbar_fixed(abundance = ko_filt_IN,
                                   daa_results_df = daa_annotated_results_df_IN_sig,
                                   Group = IN_difference$Gender,
                                   p_values_threshold = 0.005,
-                                  wrap_label = T, wraplength = 50,
+                                  wrap_label = T, wraplength = 200,
                                   order_by_log = F,
                                   order = "pathway_class",
                                   ko_to_kegg = TRUE,
@@ -203,18 +204,18 @@ IN_graph = pathway_errorbar_fixed(abundance = ko_filt_IN,
 IN_graph
 ggsave("IN graph final.png", plot=IN_graph, width =20, height = 16)
 
-# GC graph
+# GC graph - no significant difference
 daa_annotated_results_df_GC_sig = daa_annotated_results_df_GC %>% 
-  filter( p_adjust<=0.005 & abs(log2_fold_change >= 3.1))
+  filter( p_adjust<=0.05 & abs(log2_fold_change >= 1))
 
-nrow(daa_annotated_results_df_GC)
+nrow(daa_annotated_results_df_GC_sig)
 summary(daa_annotated_results_df_GC)
 
 GC_graph = pathway_errorbar_fixed(abundance = ko_filt_GC,
                                   daa_results_df = daa_annotated_results_df_GC_sig,
                                   Group = GC_difference$Gender,
                                   p_values_threshold = 0.005,
-                                  wrap_label = T, wraplength = 50,
+                                  wrap_label = T, wraplength = 200,
                                   order_by_log = F,
                                   order = "pathway_class",
                                   ko_to_kegg = TRUE,
