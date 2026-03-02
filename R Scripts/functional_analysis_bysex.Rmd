@@ -8,6 +8,7 @@ library(tidyverse)
 library(phyloseq)
 library(ggpicrust2)
 library(GGally)
+library('pheatmap')
 ```
 
 ## Load physloseq and rarefaction
@@ -186,7 +187,7 @@ ggsave("IM graph final.png", plot=IM_graph, width =20, height = 16)
 
 # IN graph 
 daa_annotated_results_df_IN_sig = daa_annotated_results_df_IN %>% 
-  filter( p_adjust<=0.005 & abs(log2_fold_change >= 3.3))
+  filter( p_adjust<=0.005 & abs(log2_fold_change >= 3.5))
 
 nrow(daa_annotated_results_df_IN_sig)
 
@@ -202,14 +203,14 @@ IN_graph = pathway_errorbar_fixed(abundance = ko_filt_IN,
                                   x_lab = "pathway_name")
 
 IN_graph
-ggsave("IN graph final.png", plot=IN_graph, width =20, height = 16)
+ggsave("IN graph final.png", plot=IN_graph, width =22, height = 14)
 
 # GC graph - no significant difference
 daa_annotated_results_df_GC_sig = daa_annotated_results_df_GC %>% 
   filter( p_adjust<=0.05 & abs(log2_fold_change >= 1))
 
 nrow(daa_annotated_results_df_GC_sig)
-summary(daa_annotated_results_df_GC)
+
 
 GC_graph = pathway_errorbar_fixed(abundance = ko_filt_GC,
                                   daa_results_df = daa_annotated_results_df_GC_sig,
@@ -229,5 +230,114 @@ ggsave("GC graph final.png", plot=GC_graph, width =20, height = 16)
 
 ```
 
+# Heat map and PCA
+```{r}
+
+# CG
+sig_features_CG = daa_annotated_results_df_CG_sig %>% 
+  pull('feature') %>% unique()
+
+ko_relab = read.delim("pred_metagenome_unstrat.tsv", row.names=1) %>% 
+  apply(2,function(x) x/sum(x)) %>% as.data.frame()
+colSums(ko_relab) 
+
+stats_CG = ko_relab %>% t() %>%  
+  as.data.frame() %>% 
+  select(all_of(sig_features_CG)) %>% 
+  cor(method = 'spearman') 
+
+color_palette <- colorRampPalette(c("blue", "white", "red"))(40)
+
+breaks <- seq(-1, 1, length.out = 41)
+
+pheatmap(stats_CG, 
+         clustering_distance_rows = "euclidean",  
+         clustering_distance_cols = "euclidean", 
+         clustering_method = "complete",          
+         color = color_palette, 
+         breaks = breaks,
+         main = '',
+         fontsize_row = 10, 
+         fontsize_col = 10,
+         filename = "CG Heatmap.png",
+         height= 9, width = 9)
+
+CG_PCA = pathway_pca(abundance = ko_filt_CG,
+            metadata = CG_difference, 
+            group = "Gender")
+
+ggsave("CG PCA plot.png", plot=CG_PCA, width =12, height = 8)
+
+# IN
+sig_features_IN = daa_annotated_results_df_IN_sig %>% 
+  pull('feature') %>% unique()
+
+stats_IN = ko_relab %>% t() %>%  
+  as.data.frame() %>% 
+  select(all_of(sig_features_IN)) %>% 
+  cor(method = 'spearman') 
+
+
+pheatmap(stats_IN, 
+         clustering_distance_rows = "euclidean",  
+         clustering_distance_cols = "euclidean", 
+         clustering_method = "complete",          
+         color = color_palette, 
+         breaks = breaks,
+         main = '',
+         fontsize_row = 10, 
+         fontsize_col = 10,
+         filename = "IN Heatmap.png",
+         height= 9, width = 9)
+
+IN_PCA = pathway_pca(abundance = ko_filt_IN,
+            metadata = IN_difference, 
+            group = "Gender")
+
+ggsave("IN PCA plot.png", plot=IN_PCA, width =12, height = 8)
+
+
+
+```
+
+
+# Additional inquiries
+```{r}
+
+# CG
+CG_plot = daa_annotated_results_df_CG_sig %>%
+  ggplot(aes(x=log2_fold_change,
+             y=pathway_name,
+             size=p_adjust)) +
+  geom_point() +
+  labs(x= "Log2 Fold Change",
+       y= "Pathway",
+       size= "Adjusted p-value",
+       title= "CG Differential Pathways") +
+  theme_bw()
+
+CG_plot
+
+ggsave("CG supplement plot.png", plot=CG_plot, width =12, height = 8)
+
+# IN
+IN_plot = daa_annotated_results_df_IN_sig %>%
+  ggplot(aes(x=log2_fold_change,
+             y=pathway_name,
+             size=p_adjust)) +
+  geom_point() +
+  labs(x= "Log2 Fold Change",
+       y= "Pathway",
+       size= "Adjusted p-value",
+       title= "IN Differential Pathways") +
+  theme_bw()
+
+IN_plot
+
+ggsave("IN supplement plot.png", plot=IN_plot, width =12, height = 8)
+
+
+
+```
 
 
