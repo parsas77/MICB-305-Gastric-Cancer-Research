@@ -44,11 +44,11 @@ beta_diversity_plot = mds_data %>%
     color = "Biological Sex") +
   theme_bw() +
   theme(
-    legend.position = "none",
     strip.text = element_text(size = 16.5, face = "bold"),
     axis.text.x = element_text(size = 13),
     axis.title.y = element_text(size = 16),
-    axis.title.x = element_text(size = 16)
+    axis.title.x = element_text(size = 16),
+    panel.spacing = unit(2.5, "lines")
   ) 
 
 beta_diversity_plot
