@@ -90,7 +90,7 @@ stratification
 # Select GC gastric disease stage to analyze
 gc_stage <- c("Gastric cancer (GC)") # Repeat this with the four other stages!
 
-# Kepp ONLY samples from that stage
+# Keep ONLY samples from that stage
 gc_samples_to_keep = gastric_metadata %>% filter(Group %in% gc_stage) %>% 
   rownames()
 
@@ -164,7 +164,7 @@ stats_hc
 # Select IM gastric disease stage to analyze
 im_stage <- c("Intestinal metaplasia (IM）") 
 
-# Kepp ONLY samples from that stage
+# Keep ONLY samples from that stage
 im_samples_to_keep = gastric_metadata %>% filter(Group %in% im_stage) %>% 
   rownames()
 
@@ -200,7 +200,7 @@ stats_im
 # Select IN gastric disease stage to analyze
 in_stage <- c("Intraepithelial neoplasia (IN)") 
 
-# Kepp ONLY samples from that stage
+# Keep ONLY samples from that stage
 in_samples_to_keep = gastric_metadata %>% filter(Group %in% in_stage) %>% 
   rownames()
 
