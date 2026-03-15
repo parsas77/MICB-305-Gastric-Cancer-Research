@@ -113,8 +113,14 @@ intraepithelial_neoplasia_plot <- intraepithelial_neoplasia_taxa%>%
   coord_flip() +
   labs(
     x = "Bacterial Genus",
-    y = "Log Fold Change (Male relative to Female)",
-    title = "Differential Abundance (Intraepithelial Neoplasia)"
+    y = "Log Fold Change (Male relative to Female)")+
+   theme(
+    axis.title.x = element_text(face = "bold"),
+    axis.title.y = element_text(face = "bold"),
+    legend.title = element_text(face = "bold"),
+    legend.text = element_text(face = "bold"),
+    axis.text.x  = element_text(face = "bold"),
+    axis.text.y  = element_text(face = "bold"),
   )
 
 intraepithelial_neoplasia_plot

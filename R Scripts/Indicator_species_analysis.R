@@ -1,10 +1,10 @@
-# In this script, we will run
-# 1. Indicator Taxa 
+# In this script, we will run Indicator Taxa Analysis
 
 # Load necessary libraries 
 library(tidyverse)
 library(phyloseq)
 library(indicspecies)
+library(gt)
 
 # Load object
 ps = readRDS('Datasets/phyloseq_taxonomy.rds')
@@ -17,7 +17,8 @@ ps_relab = transform_sample_counts(ps_genus, function(x) x / sum(x))
 ps_filt = filter_taxa(ps_relab, function(x) mean(x) > 0.001, TRUE)
 otu_table = data.frame(otu_table(ps_filt))
 
-# Indicator species analysis - Stratified by Gastric Disease Stage only -------------------------
+# Indicator species analysis --------------
+# Stratified by Gastric Disease Stage only -------------------------
 
 # Find indicator species for each gastric disease stages - without stratifying
 # by biological sex 
@@ -93,7 +94,9 @@ ggsave("Results/Plots/Ind_Genus_Disease_Stage_nosex.png",
        width= 10,
        height = 10)
 
-# Indicator species analysis - Sex comparison between each gastric disease stage  -------------------------
+# Individual analysis for each sex between stages  -------------------------
+
+# Function 1 ------------------
 
 run_indval <- function(ps_obj, otu_table, seed = 520, cat) {
   set.seed(520)
@@ -181,9 +184,10 @@ ggsave("Results/Plots/Ind_Genus_Disease_Stage_Male.png",
        height = 10)
 
 
-# Indicator species analysis - Comparison between sex at each stage  -------------------------
+# Comparison between sex within each stage  -------------------------
 # No significant indicator taxa between male and female for all 4 stages except for IN
 
+# Function 2 ---------------------
 run_indval <- function(ps_obj, otu_table, seed = 520, cat) {
   set.seed(520)
   indval = multipatt(t(otu_table), 
@@ -290,3 +294,82 @@ dotplot <- run_indval(GC,
                       seed = 520, 
                       cat = "Gastric cancer (GC)") 
 dotplot
+
+# Summary table for male at IN stage ----------------
+# Since there are two indicator taxa unqiue to male at the IN stage, I will
+# make a table displaying the two genus and the associated stats 
+
+# Re-run the analysis for IN stage 
+set.seed(520)
+indval = multipatt(t(otu_table_IN), 
+                   cluster= IN@sam_data$Gender,
+                   control = how(nperm = 999))
+
+indval_table = as.data.frame(indval$sign) %>%
+ filter(stat> 0.7 & p.value < 0.05)
+
+genus_map <- tax_table(IN) %>%
+  as("matrix") %>%
+  as.data.frame() %>%
+  rownames_to_column("taxa_id") %>%
+  transmute(taxa_id, Genus = as.character(Genus))
+
+indval_table_genus <- indval_table %>%
+  rownames_to_column("taxa_id") %>%
+  left_join(genus_map, by = "taxa_id") %>%
+  mutate(
+    Genus = if_else(is.na(Genus) | Genus == "", taxa_id, Genus),
+    Genus = str_remove(Genus, "^g__"),
+    Genus = if_else(Genus == "" | is.na(Genus), "Unclassified", Genus),
+    Biological_Sex = case_when(
+      s.female == 1 & s.male == 0 ~ "Female",
+      s.female == 0 & s.male == 1 ~ "Male",
+      s.female == 1 & s.male == 1 ~ "Female and male",
+      TRUE ~ "Other"
+    ),
+    Indicator_value = round(stat, 3),
+    p_value = if_else(p.value < 0.001, "<0.001", sprintf("%.3f", p.value))
+  ) %>%
+  select(Genus, Biological_Sex, Indicator_value, p_value) %>%
+  arrange(Biological_Sex, desc(Indicator_value))
+indval_table_genus
+
+indicator_pub_table <- indval_table_genus %>%
+  gt() %>%
+  tab_header(
+    title = md("**Indicator genera associated with sex**"),
+    subtitle = "Genera with indicator value > 0.7 and p < 0.05"
+  ) %>%
+  cols_label(
+    Genus = "Genus",
+    Biological_Sex = "Biological Sex",
+    Indicator_value = "Indicator value",
+    p_value = md("**p**-value")
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(everything())
+  ) %>%
+  tab_style(
+    style = cell_text(style = "italic"),
+    locations = cells_body(columns = Genus)
+  )%>%
+  tab_options(
+    table.font.size = 12,
+    heading.title.font.size = 13,
+    heading.subtitle.font.size = 11,
+    data_row.padding = px(5),
+    table.border.top.width = px(1.5),
+    table.border.bottom.width = px(1.5),
+    column_labels.border.bottom.width = px(1),
+    row.striping.background_color = "grey95"
+  ) %>%
+  opt_row_striping() %>%
+  tab_source_note(
+    source_note = "Indicator taxa were identified using multipatt analysis with 999 permutations."
+  )
+
+indicator_pub_table
+
+# Save the table
+gtsave(indicator_pub_table, "Results/Tables/IN_indicator_genera_sex.png")

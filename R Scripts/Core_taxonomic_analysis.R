@@ -19,12 +19,18 @@ sex.female = subset_samples(ps_rare_relab_genus, Gender == 'female')
 ASVs_male = core_members(sex.male, detection=0.001, prevalence = 0.2)
 ASVs_female = core_members(sex.female, detection=0.001, prevalence = 0.2)
 
-diagram<- ggVennDiagram(list(ASVs_male, ASVs_female),
-              set_size = 5,
-              category.names = c('male','female'))
+diagram <- ggVennDiagram(
+  list(male = ASVs_male, female = ASVs_female),
+  set_size = 5
+) +
+  coord_cartesian(clip = "off") +
+  theme(
+    plot.margin = margin(t =10, r = 100, b = 1, l = 80)
+  )
+
 diagram
 
 ggsave("Results/Plots/core_genus_sex.png",
        diagram,
-       width = 8,
-       height = 5)
+       width = 10,
+       height = 8)
