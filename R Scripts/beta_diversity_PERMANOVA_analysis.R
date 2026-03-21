@@ -19,46 +19,52 @@ as.matrix(ps_bray)
 
 # MDS scaling 
 set.seed(421)
+# Defining Stages using the exact names from the gastric metadata
+list <- c( "Healthy control (HC)",
+           "Chronic gastritis (CG)",
+           "Intestinal metaplasia (IM）",
+           "Intraepithelial neoplasia (IN)", 
+           "Gastric cancer (GC)")
+for(l in list){
+  # Get sample IDs for that stage that are also present in the Bray-Curtis matrix
+  samples <- gastric_metadata %>% 
+    filter(Group == l) %>% 
+    rownames() %>% 
+    intersect(rownames(as.matrix(ps_bray)))
+  # Subset Bray-Curtis distance matrix 
+  bray_sub <- as.matrix(ps_bray)[samples, samples] %>% 
+    as.dist()
+  # Run NMDS on the subset distance matrix
+  mds <- metaMDS(bray_sub)
+  
+  # Extract NMDS coordinates and merge with subset medata
+  mds_data <- mds$points %>%
+    as.data.frame() %>%
+    merge(gastric_metadata[samples, , drop = FALSE],
+          by = "row.names", sort = FALSE)
+  
+ # Plotting! 
+  beta_plot <- mds_data %>% 
+    ggplot(aes(MDS1, MDS2, color = Gender)) +
+    geom_point(size = 3) +
+    stat_ellipse(linewidth = 1.1) +
+    theme_classic() +
+    labs(
+      title = l,
+      x = "MDS1",
+      y = "MDS2",
+      color = "Biological Sex"
+    )
+ 
+  # Save plots!
+  ggsave(
+    filename = paste("Results/Plots/Beta_Diversity/beta_diversity_", l, ".png"),
+    plot = beta_plot,
+    width = 6, 
+    height = 5
+  )
+}
 
-mds = metaMDS(ps_bray)
-
-# Extracting Data
-
-mds_data = mds$points %>% as.data.frame %>%
-  merge(sample_data(psrare), by='row.names', sort=F)
-head(mds_data)
-
-
-# Plotting ~ Separating Each Group and Comparing Gastric Microbiome Based on 
-# Biological Sex
-
-beta_diversity_plot = mds_data %>%
-  ggplot(aes(MDS1,MDS2,color = Gender)) +
-  geom_point(size = 3) +
-  stat_ellipse(linewidth = 1.1) +
-  facet_wrap(~Group, nrow = 2) +
-  theme_classic(base_size=18) +
-  labs(
-    x = "MDS1",
-    y = "MDS2",
-    color = "Biological Sex") +
-  theme_bw() +
-  theme(
-    strip.text = element_text(size = 16.5, face = "bold"),
-    axis.text.x = element_text(size = 13),
-    axis.title.y = element_text(size = 16),
-    axis.title.x = element_text(size = 16),
-    panel.spacing = unit(2.5, "lines")
-  ) 
-
-beta_diversity_plot
-
-
-# Saving the Plot!
-ggsave("Results/Plots/beta_diversity_bray-curtis.png",
-       beta_diversity_plot,
-       width= 10,
-       height = 10)
 
 # Note: Need to check the stratification of the overall data to determine which
 # variable is pulling a lot weight (i.e., driving overall microbiome variation)
