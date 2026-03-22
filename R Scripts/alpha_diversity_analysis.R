@@ -273,7 +273,7 @@ p_faith
 
 # Save Faith's PD plot
 ggsave("Results/Plots/Alpha_Faith_PD.png",
-       plot = p_faith, height = 4, width = 12)
+       plot = p_faith, height = 8, width = 5)
 
 # Save Faith's PD statistics
 write_xlsx(
