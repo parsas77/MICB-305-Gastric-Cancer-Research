@@ -35,6 +35,11 @@ str(pdata)
 # variable = alpha diversity metric
 # value = alpha diversity value
 
+# Clean and reorder Group labels
+pdata$Group = trimws(as.character(pdata$Group))
+pdata$Group[pdata$Group == "Intestinal metaplasia (IM）"] = "Intestinal metaplasia (IM)"
+pdata$Group = factor(pdata$Group, levels = group_order)
+
 # Run Wilcoxon tests comparing female vs male within each disease stage
 # for each alpha diversity metric, then adjust p-values using BH correction
 stats = pdata %>%
@@ -57,11 +62,16 @@ annot = stats %>%
   mutate(
     ypos = 1.1 * max.y,
     label = ifelse(
-      padj > 0.05, "NS",
+      padj > 0.05, "ns",
       ifelse(padj > 0.01, "*",
              ifelse(padj > 0.001, "**", "***"))
     )
   )
+
+# Clean and standardize Group labels in alpha annotation data
+annot$Group = trimws(as.character(annot$Group))
+annot$Group[annot$Group == "Intestinal metaplasia (IM）"] = "Intestinal metaplasia (IM)"
+annot$Group = factor(annot$Group, levels = group_order)
 
 # Function to plot one alpha diversity metric at a time
 alpha_plot <- function(metric_name) {
@@ -74,24 +84,46 @@ alpha_plot <- function(metric_name) {
   
   ggplot(plot_data, aes(x = Gender, y = value, fill = Gender)) +
     geom_boxplot(outlier.shape = NA, width = 0.6) +
-    geom_jitter(width = 0.15, alpha = 0.5, size = 1.5) +
+    geom_jitter(width = 0.15, alpha = 0.35, size = 1.5) +
     facet_wrap(~Group, nrow = 1) +
-    geom_text(
-      data = annot_data,
-      aes(x = 1.5, y = ypos, label = label),
+    geom_signif(
+      data = annot_data %>% filter(label %in% c("*", "**", "***")),
+      aes(
+        xmin = "female",
+        xmax = "male",
+        annotations = label,
+        y_position = ypos),
+      manual = TRUE,
       inherit.aes = FALSE,
-      size = 5
+      textsize = 6,
+      tip_length = 0.02,
+      vjust = 0.3) +
+    geom_signif(
+      data = annot_data %>% filter(label == "ns"),
+      aes(xmin = "female",
+        xmax = "male",
+        annotations = label,
+        y_position = ypos),
+      manual = TRUE,
+      inherit.aes = FALSE,
+      textsize = 4,
+      tip_length = 0.02,
+      vjust = 0.3
     ) +
     labs(x = NULL, y = NULL) +
+    scale_x_discrete(labels = c("female" = "Female", "male" = "Male")) +
     theme_bw() +
     theme(
       legend.position = "none",
       strip.text = element_text(size = 6.5),
-      axis.text.x = element_text(size = 11),
+      axis.text.x = element_text(size = 8, angle = 50, hjust = 1),
       axis.title.y = element_text(size = 12),
-      plot.title = element_text(size = 13, hjust = 0.5)
+      plot.title = element_text(size = 13, hjust = 0.5),
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank()
     ) +
-    scale_y_continuous(expand = expansion(mult = c(0, 0.12)))
+    scale_y_continuous(limits = c(0, NA),
+                       expand = expansion(mult = c(0.02, 0.115)))
 }
 
 # Generate one plot for each alpha diversity metric
@@ -100,17 +132,18 @@ p_shannon  = alpha_plot("Shannon")  + labs(y = "Shannon Diversity Index")
 p_chao1    = alpha_plot("Chao1")    + labs(y = "Chao1 Richness")
 p_simpson  = alpha_plot("Simpson")  + labs(y = "Simpson Diversity Index")
 
+
 # Save alpha diversity plots
-ggsave("../Results/Plots/Alpha_Observed.jpeg",
+ggsave("Results/Plots/Alpha_Observed.png",
        plot = p_observed, height = 4, width = 12)
 
-ggsave("../Results/Plots/Alpha_Shannon.jpeg",
+ggsave("Results/Plots/Alpha_Shannon.png",
        plot = p_shannon, height = 4, width = 12)
 
-ggsave("../Results/Plots/Alpha_Chao1.jpeg",
+ggsave("Results/Plots/Alpha_Chao1.png",
        plot = p_chao1, height = 4, width = 12)
 
-ggsave("../Results/Plots/Alpha_Simpson.jpeg",
+ggsave("Results/Plots/Alpha_Simpson.png",
        plot = p_simpson, height = 4, width = 12)
 
 # Save alpha diversity statistics
