@@ -103,25 +103,22 @@ intraepithelial_neoplasia_taxa <- intraepithelial_neoplasia_statistical_table %>
 
 # Plot the log 2 fold changes of differential abundance of intraepithelial neoplasia (male relative
 # to female) 
-intraepithelial_neoplasia_plot <- intraepithelial_neoplasia_taxa%>%
-  mutate(
-    Genus = as.character(tax_table(ps_genus)[taxon, "Genus"]),
-    Genus = str_replace_all(Genus, "g__", "")
-  ) %>%
+intraepithelial_neoplasia_plot <- intraepithelial_neoplasia_taxa %>%
+  mutate(Genus = as.character(tax_table(ps_genus)[taxon, "Genus"]),
+         Genus = str_replace_all(Genus, "g__", ""),
+         Title = "Differential Abundance (Intraepithelial neoplasia)") %>%
   ggplot(aes(Genus, lfc_Gendermale, fill = Genus)) +
   geom_col() +
   coord_flip() +
-  labs(
-    x = "Bacterial Genus",
-    y = "Log Fold Change (Male relative to Female)")+
-   theme(
-    axis.title.x = element_text(face = "bold"),
-    axis.title.y = element_text(face = "bold"),
-    legend.title = element_text(face = "bold"),
-    legend.text = element_text(face = "bold"),
-    axis.text.x  = element_text(face = "bold"),
-    axis.text.y  = element_text(face = "bold"),
-  )
+  facet_wrap(~Title, nrow = 1) +   # <-- this creates the grey box
+  labs(x = "Bacterial Genus",
+       y = "Log2 Fold Change (Male relative to Female)") +
+  theme_bw() +
+  theme(legend.position = "none",
+        strip.text = element_text(size = 16,hjust = 0.5),
+        strip.background = element_rect(fill = "grey85", color = "black"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
 
 intraepithelial_neoplasia_plot
 
