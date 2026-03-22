@@ -111,7 +111,7 @@ intraepithelial_neoplasia_plot <- intraepithelial_neoplasia_taxa %>%
   geom_col() +
   coord_flip() +
   facet_wrap(~Title, nrow = 1) +   # <-- this creates the grey box
-  labs(x = "Bacterial Genus",
+  labs(x = "Genus",
        y = "Log2 Fold Change (Male relative to Female)") +
   theme_bw() +
   theme(legend.position = "none",
@@ -142,7 +142,7 @@ gastric_cancer_statistical_table = gastric_cancer_out$res
 # Save plot to GitHub results folder
 ggsave("Results/Plots/IN_Genus_Differential_Abundance_Male_vs_Female.png",
        intraepithelial_neoplasia_plot,
-       width = 10,
+       width = 8.5,
        height = 6)
 
 
