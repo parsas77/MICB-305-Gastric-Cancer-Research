@@ -6,9 +6,10 @@ library(broom)
 library(writexl)
 library(picante)
 library(ape)
+library(ggsignif)
 
 # Load phyloseq object
-ps = readRDS("../Datasets/phyloseq_taxonomy.rds")
+ps = readRDS("Datasets/phyloseq_taxonomy.rds")
 
 # Rarefy samples to chosen sequencing depth
 psrare = ps %>% rarefy_even_depth(sample.size = 8000, rngseed = 421)
@@ -156,6 +157,19 @@ meta_df = data.frame(sample_data(psrare)) %>%
 
 faith_df = left_join(faith_df, meta_df, by = "SampleID")
 
+# Clean and reorder Group labels
+faith_df$Group = trimws(as.character(faith_df$Group))
+faith_df$Group[faith_df$Group == "Intestinal metaplasia (IM）"] = "Intestinal metaplasia (IM)"
+
+# Order groups by gastric cancer progression
+group_order = c("Healthy control (HC)",
+                "Chronic gastritis (CG)",
+                "Intestinal metaplasia (IM)",
+                "Intraepithelial neoplasia (IN)",
+                "Gastric cancer (GC)")
+
+faith_df$Group = factor(faith_df$Group, levels = group_order)
+
 # Run Wilcoxon tests comparing female vs male within each disease stage
 faith_stats = faith_df %>%
   group_by(Group) %>%
@@ -173,33 +187,60 @@ faith_annot = faith_stats %>%
   mutate(
     ypos = 1.08 * faith_max,
     label = ifelse(
-      padj > 0.05, "NS",
+      padj > 0.05, "ns",
       ifelse(padj > 0.01, "*",
              ifelse(padj > 0.001, "**", "***"))
     ),
-    label_size = ifelse(label == "NS", 6, 8)
+    label_size = ifelse(label == "*", 8, 6)
   )
+
+# Clean and standardize Group labels in faith annotation data
+faith_annot$Group = trimws(as.character(faith_annot$Group))
+faith_annot$Group[faith_annot$Group == "Intestinal metaplasia (IM）"] = "Intestinal metaplasia (IM)"
+faith_annot$Group = factor(faith_annot$Group, levels = group_order)
 
 # Create the Faith's PD plot
 p_faith = ggplot(faith_df, aes(x = Gender, y = PD, fill = Gender)) +
   geom_boxplot(outlier.shape = NA, width = 0.6) +
   geom_jitter(width = 0.15, alpha = 0.35, size = 1.5) +
   facet_wrap(~Group, nrow = 1) +
-  geom_text(
-    data = faith_annot,
-    aes(x = 1.5, y = ypos, label = label, size = label_size),
-    inherit.aes = FALSE
-  ) +
+  geom_signif(data = faith_annot %>% filter(label == "*"),
+              aes(xmin = "female", xmax = "male",
+                  annotations = label,
+                  y_position = ypos),
+              manual = TRUE,
+              inherit.aes = FALSE,
+              textsize = 6,   
+              tip_length = 0.02,
+              vjust = 0.3) +
+  geom_signif(data = faith_annot %>% filter(label == "ns"),
+              aes(xmin = "female", xmax = "male",
+                  annotations = label,
+                  y_position = ypos),
+              manual = TRUE,
+              inherit.aes = FALSE,
+              textsize = 4,   
+              tip_length = 0.02,
+              vjust = 0.3) +
   scale_size_identity() +
   labs(y = "Phylogenetic Diversity (Faith's PD)", x = NULL) +
+  scale_x_discrete(labels = c("female" = "Female", "male" = "Male")) +
   theme_bw() +
-  theme(legend.position = "none") +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.12)))
+  theme(
+    legend.position = "none",
+    strip.text = element_text(size = 6.5),
+    axis.text.x = element_text(size = 8, angle = 50, hjust = 1),
+    axis.title.y = element_text(size = 12),
+    plot.title = element_text(size = 13, hjust = 0.5),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()) +
+  scale_y_continuous(limits = c(0, NA),
+                     expand = expansion(mult = c(0.02, 0.115)))
 
 p_faith
 
 # Save Faith's PD plot
-ggsave("../Results/Plots/Alpha_Faith_PD.jpeg",
+ggsave("Results/Plots/Alpha_Faith_PD.png",
        plot = p_faith, height = 4, width = 12)
 
 # Save Faith's PD statistics
