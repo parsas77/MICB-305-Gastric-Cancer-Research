@@ -2,6 +2,7 @@ library(tidyverse)
 library(phyloseq)
 library(microbiome)
 library(ggVennDiagram)
+library(patchwork)
 
 # Load object
 ps = readRDS('Datasets/phyloseq_taxonomy.rds')
@@ -41,69 +42,92 @@ ggsave("Results/Plots/core_genus_sex.png",
 
 
 # Make core microbiome function ----------------
-core_graph <- function(ps, detection, prevalence) {
+
+core_graph <- function(ps, detection, prevalence, title = NULL) {
   # Subset phyloseq object
-  sex.male = subset_samples(ps, Gender == 'male')
-  sex.female = subset_samples(ps, Gender == 'female')
+  sex.male <- subset_samples(ps, Gender == "male")
+  sex.female <- subset_samples(ps, Gender == "female")
   
   # Find core members
-  ASVs_male = core_members(sex.male, detection=detection, prevalence = prevalence)
-  ASVs_female = core_members(sex.female, detection=detection, prevalence = prevalence)
+  ASVs_male <- core_members(sex.male, detection = detection, prevalence = prevalence)
+  ASVs_female <- core_members(sex.female, detection = detection, prevalence = prevalence)
   
-  diagram <- ggVennDiagram(
-    list(male = ASVs_male, female = ASVs_female),
-    set_size = 5
+  ggVennDiagram(
+    list(Female = ASVs_female, Male = ASVs_male),
+    set_size = 4
   ) +
     coord_cartesian(clip = "off") +
+    ggtitle(title) +
+    theme_bw() +
     theme(
-      plot.margin = margin(t =10, r = 100, b = 1, l = 80)
-    )
-  
-  diagram
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      legend.position = "none",
+      strip.background = element_blank(),
+      strip.text = element_text(size = 5),
+      axis.text = element_blank(),
+      axis.ticks = element_blank(),
+      axis.title = element_blank(),
+      plot.title = element_text(size = 13, hjust = 0.5, face = "bold"),
+      plot.margin = margin(t =10, r = 10, b = 1, l = 10),
+    )+
+    scale_fill_gradient(low = "pink", high = "skyblue")
 }
 
 # Run analysis by each stage -------------- 
 
 hc <- subset_samples(ps_rare_relab_genus, Group == "Healthy control (HC)")
-
-
-diagram <- core_graph(hc, 0.001, 0.2) 
-diagram
+hc_plot <- core_graph(hc, 0.001, 0.2, "Healthy control")
+hc_plot
 ggsave("Results/Plots/core_genus_sex_HC.png",
-       diagram,
+       hc_plot,
        width = 10,
-       height = 8)
+       height = 10)
 
 CG <- subset_samples(ps_rare_relab_genus, Group == "Chronic gastritis (CG)")
-diagram <- core_graph(CG, 0.001, 0.2) 
-diagram
+CG_plot <- core_graph(CG, 0.001, 0.2, "Chronic gastritis")
+CG_plot
 ggsave("Results/Plots/core_genus_sex_CG.png",
-       diagram,
+       CG_plot,
        width = 10,
-       height = 8)
+       height = 10)
 
 IM <- subset_samples(ps_rare_relab_genus, Group == "Intestinal metaplasia (IM）")
-diagram <- core_graph(IM, 0.001, 0.2) 
-diagram
+IM_plot <- core_graph(IM, 0.001, 0.2, "Intestinal metaplasia")
+IM_plot
 ggsave("Results/Plots/core_genus_sex_IM.png",
-       diagram,
+       IM_plot,
        width = 10,
-       height = 8)
+       height = 10)
 
 
 IN <- subset_samples(ps_rare_relab_genus, Group == "Intraepithelial neoplasia (IN)")
-diagram <- core_graph(IN, 0.001, 0.2) 
-diagram
+IN_plot <- core_graph(IN, 0.001, 0.2, "Intraepithelial neoplasia")
+IN_plot
 ggsave("Results/Plots/core_genus_sex_IN.png",
-       diagram,
+       IN_plot,
        width = 10,
-       height = 8)
+       height = 10)
 
 
 GC <- subset_samples(ps_rare_relab_genus, Group == "Gastric cancer (GC)")
-diagram <- core_graph(GC, 0.001, 0.2) 
-diagram
+GC_plot <- core_graph(GC, 0.001, 0.2, "Gastric cancer")
+GC_plot
 ggsave("Results/Plots/core_genus_sex_GC.png",
-       diagram,
+       GC_plot,
        width = 10,
-       height = 8)
+       height = 10)
+
+# Make combined graphs
+
+combined_plot <- wrap_plots(
+  hc_plot, CG_plot, IM_plot,
+  IN_plot, GC_plot,
+  ncol = 3
+)
+combined_plot
+
+ggsave("Results/Plots/core_genus_combined.png",
+       combined_plot,
+       width = 22,
+       height = 18)
