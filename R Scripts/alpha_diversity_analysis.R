@@ -267,7 +267,7 @@ p_faith = ggplot(faith_df, aes(x = Gender, y = PD, fill = Gender)) +
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank()) +
   scale_y_continuous(limits = c(0, NA),
-                     expand = expansion(mult = c(0.02, 0.115)))
+                     expand = expansion(mult = c(0.02, 0.05)))
 
 p_faith
 
