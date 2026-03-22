@@ -319,7 +319,7 @@ indval_table_genus <- indval_table %>%
   left_join(genus_map, by = "taxa_id") %>%
   mutate(
     Genus = if_else(is.na(Genus) | Genus == "", taxa_id, Genus),
-    Genus = str_remove(Genus, "^g__"),
+    Genus = str_remove(Genus, "g__"),
     Genus = if_else(Genus == "" | is.na(Genus), "Unclassified", Genus),
     Biological_Sex = case_when(
       s.female == 1 & s.male == 0 ~ "Female",
