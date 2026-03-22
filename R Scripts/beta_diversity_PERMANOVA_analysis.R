@@ -48,7 +48,10 @@ for(l in list){
     ggplot(aes(MDS1, MDS2, color = Gender)) +
     geom_point(size = 3) +
     stat_ellipse(linewidth = 1.1) +
+    scale_color_manual(values = c("female" = "#F8766D", "male" = "#00BFC4"),
+                       labels = c("female" = "Female", "male" = "Male")) +
     theme_classic() +
+    theme(plot.title = element_text(hjust = 0.5)) +
     labs(
       title = l,
       x = "MDS1",
