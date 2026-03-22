@@ -72,21 +72,32 @@ plot_df <- indval_long %>%
   ungroup()
 
 # Create dotplot 
+plot_df$Plot_Title <- "Indicator Genus for Gastric Disease Stage"
+
 dotplot_nosex <- ggplot(plot_df, aes(
   x = Gastric_Disease_Stage,
   y = fct_reorder(Genus, stat)
 )) +
-  geom_point(aes(size = stat, color = Gastric_Disease_Stage,)) +
+  geom_point(aes(size = stat, color = Gastric_Disease_Stage)) +
+  facet_wrap(~Plot_Title, nrow = 1) +
   scale_size_continuous(range = c(2, 7)) +
   scale_alpha_continuous(range = c(0.4, 1), name = "-log10(p) (capped)") +
-  labs(x = NULL, y = "Genus", size = "IndVal stat", color = "Gastric Disease stage") +
-  ggtitle("Indicator Genus for Gastric Disease Stage")+
+  labs(
+    x = NULL,
+    y = "Genus",
+    size = "IndVal stat",
+    color = "Gastric Disease stage"
+  ) +
+  guides(color = "none") +
   theme_bw() +
   theme(
     axis.text.y = element_text(size = 9),
-    axis.text.x = element_text(angle = 25, hjust = 1),
-    panel.grid.minor = element_blank()
-  )
+    axis.text.x = element_text(angle = 35, hjust = 1),
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank(),
+    strip.text = element_text(size = 16, hjust = 0.5, face = "plain"),
+    strip.background = element_rect(fill = "grey85", color = "black"))
+
 dotplot_nosex
 
 ggsave("Results/Plots/Ind_Genus_Disease_Stage_nosex.png",
