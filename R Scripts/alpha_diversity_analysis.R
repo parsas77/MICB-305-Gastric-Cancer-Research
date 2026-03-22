@@ -35,6 +35,13 @@ str(pdata)
 # variable = alpha diversity metric
 # value = alpha diversity value
 
+# Order groups by gastric cancer progression
+group_order = c("Healthy control (HC)",
+                "Chronic gastritis (CG)",
+                "Intestinal metaplasia (IM)",
+                "Intraepithelial neoplasia (IN)",
+                "Gastric cancer (GC)")
+
 # Clean and reorder Group labels
 pdata$Group = trimws(as.character(pdata$Group))
 pdata$Group[pdata$Group == "Intestinal metaplasia (IM）"] = "Intestinal metaplasia (IM)"
@@ -101,14 +108,14 @@ alpha_plot <- function(metric_name) {
     geom_signif(
       data = annot_data %>% filter(label == "ns"),
       aes(xmin = "female",
-        xmax = "male",
-        annotations = label,
-        y_position = ypos),
+          xmax = "male",
+          annotations = label,
+          y_position = ypos),
       manual = TRUE,
       inherit.aes = FALSE,
       textsize = 4,
       tip_length = 0.02,
-      vjust = 0.3
+      vjust = 0.1
     ) +
     labs(x = NULL, y = NULL) +
     scale_x_discrete(labels = c("female" = "Female", "male" = "Male")) +
@@ -193,14 +200,6 @@ faith_df = left_join(faith_df, meta_df, by = "SampleID")
 # Clean and reorder Group labels
 faith_df$Group = trimws(as.character(faith_df$Group))
 faith_df$Group[faith_df$Group == "Intestinal metaplasia (IM）"] = "Intestinal metaplasia (IM)"
-
-# Order groups by gastric cancer progression
-group_order = c("Healthy control (HC)",
-                "Chronic gastritis (CG)",
-                "Intestinal metaplasia (IM)",
-                "Intraepithelial neoplasia (IN)",
-                "Gastric cancer (GC)")
-
 faith_df$Group = factor(faith_df$Group, levels = group_order)
 
 # Run Wilcoxon tests comparing female vs male within each disease stage
@@ -254,7 +253,7 @@ p_faith = ggplot(faith_df, aes(x = Gender, y = PD, fill = Gender)) +
               inherit.aes = FALSE,
               textsize = 4,   
               tip_length = 0.02,
-              vjust = 0.3) +
+              vjust = 0.1) +
   scale_size_identity() +
   labs(y = "Phylogenetic Diversity (Faith's PD)", x = NULL) +
   scale_x_discrete(labels = c("female" = "Female", "male" = "Male")) +
