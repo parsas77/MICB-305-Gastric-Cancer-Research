@@ -70,38 +70,10 @@ core_graph <- function(ps, detection, prevalence, title = NULL) {
     )
 }
 
-core_graph_no_legend <- function(ps, detection, prevalence, title = NULL) {
-  # Subset phyloseq object
-  sex.male <- subset_samples(ps, Gender == "male")
-  sex.female <- subset_samples(ps, Gender == "female")
-  
-  # Find core members
-  ASVs_male <- core_members(sex.male, detection = detection, prevalence = prevalence)
-  ASVs_female <- core_members(sex.female, detection = detection, prevalence = prevalence)
-  
-  ggVennDiagram(
-    list(Female = ASVs_female, Male = ASVs_male),
-    set_size = 5
-  ) +
-    coord_cartesian(clip = "off") +
-    ggtitle(title) +
-    theme_bw() +
-    theme(
-      panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(),
-      legend.position = "none",
-      axis.text = element_blank(),
-      axis.ticks = element_blank(),
-      axis.title = element_blank(),
-      plot.title = element_text(size = 18, hjust = 0.5, face = "bold"),
-      plot.margin = margin(t =10, r = 10, b = 1, l = 10),
-    )
-}
-
 # Run analysis by each stage -------------- 
 
 hc <- subset_samples(ps_rare_relab_genus, Group == "Healthy control (HC)")
-hc_plot <- core_graph_no_legend(hc, 0.001, 0.2, "Healthy control")
+hc_plot <- core_graph(hc, 0.001, 0.2, "Healthy control")
 hc_plot
 ggsave("Results/Plots/core_genus_sex_HC.png",
        hc_plot,
@@ -109,7 +81,7 @@ ggsave("Results/Plots/core_genus_sex_HC.png",
        height = 10)
 
 CG <- subset_samples(ps_rare_relab_genus, Group == "Chronic gastritis (CG)")
-CG_plot <- core_graph_no_legend(CG, 0.001, 0.2, "Chronic gastritis")
+CG_plot <- core_graph(CG, 0.001, 0.2, "Chronic gastritis")
 CG_plot
 ggsave("Results/Plots/core_genus_sex_CG.png",
        CG_plot,
@@ -126,7 +98,7 @@ ggsave("Results/Plots/core_genus_sex_IM.png",
 
 
 IN <- subset_samples(ps_rare_relab_genus, Group == "Intraepithelial neoplasia (IN)")
-IN_plot <- core_graph_no_legend(IN, 0.001, 0.2, "Intraepithelial neoplasia")
+IN_plot <- core_graph(IN, 0.001, 0.2, "Intraepithelial neoplasia")
 IN_plot
 ggsave("Results/Plots/core_genus_sex_IN.png",
        IN_plot,
@@ -135,7 +107,7 @@ ggsave("Results/Plots/core_genus_sex_IN.png",
 
 
 GC <- subset_samples(ps_rare_relab_genus, Group == "Gastric cancer (GC)")
-GC_plot <- core_graph_no_legend(GC, 0.001, 0.2, "Gastric cancer")
+GC_plot <- core_graph(GC, 0.001, 0.2, "Gastric cancer")
 GC_plot
 ggsave("Results/Plots/core_genus_sex_GC.png",
        GC_plot,
@@ -153,5 +125,5 @@ combined_plot
 
 ggsave("Results/Plots/core_genus_combined.png",
        combined_plot,
-       width = 22,
+       width = 26,
        height = 18)
