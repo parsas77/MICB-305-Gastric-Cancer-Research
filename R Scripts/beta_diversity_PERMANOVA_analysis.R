@@ -1,7 +1,8 @@
-# Beta Diveristy Analysis 
+# Beta Diversity Analysis 
 library(phyloseq)
 library(tidyverse)
 library(vegan)
+library(patchwork)
 
 # Loading Object
 ps = readRDS("Datasets/phyloseq_taxonomy.rds")
@@ -19,12 +20,15 @@ as.matrix(ps_bray)
 
 # MDS scaling 
 set.seed(421)
+
 # Defining Stages using the exact names from the gastric metadata
 list <- c( "Healthy control (HC)",
            "Chronic gastritis (CG)",
            "Intestinal metaplasia (IM）",
            "Intraepithelial neoplasia (IN)", 
            "Gastric cancer (GC)")
+plot_list<- list()
+
 for(l in list){
   # Get sample IDs for that stage that are also present in the Bray-Curtis matrix
   samples <- gastric_metadata %>% 
@@ -58,15 +62,34 @@ for(l in list){
       y = "MDS2",
       color = "Biological Sex"
     )
- 
-  # Save plots!
-  ggsave(
-    filename = paste("Results/Plots/Beta_Diversity/beta_diversity_", l, ".png"),
-    plot = beta_plot,
-    width = 6, 
-    height = 5
-  )
+  
+  # Store each plot in the list 
+  
+  plot_list[[l]] <- beta_plot
 }
+
+# Combine the plots
+
+combined_plot <- wrap_plots(
+  plot_list[["Healthy control (HC)"]],
+  plot_list[["Chronic gastritis (CG)"]],
+  plot_list[[ "Intestinal metaplasia (IM）"]],
+  plot_list[["Intraepithelial neoplasia (IN)"]],
+  plot_list[["Gastric cancer (GC)"]]
+)
+
+combined_plot
+
+# combined_plot <- combined_plot + plot_annotation(tag_levels = "A")
+# Save plots!
+  ggsave(
+    filename = paste("Results/Plots/Beta_Diversity/beta_diversity_combined.png"),
+    plot = combined_plot,
+    width = 10, 
+    height = 7,
+    dpi = 300
+  )
+
 
 
 # Note: Need to check the stratification of the overall data to determine which
