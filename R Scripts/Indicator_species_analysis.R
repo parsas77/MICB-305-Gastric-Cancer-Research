@@ -410,7 +410,14 @@ bre_graph <- df_bre %>%
   ggplot(aes(Gender,Abundance,fill=Gender)) +
   geom_boxplot(outlier.shape = NA) +
   geom_jitter(height=0, width=0.2) +
-  facet_wrap(~Group, ncol = 3, scales = 'free')
+  facet_wrap(~Group, ncol = 3, scales = 'free') +
+  scale_x_discrete(labels = c("female" = "Female", "male" = "Male")) +
+  theme_bw() +
+  theme(legend.position = "none",
+        axis.text.x = element_text(size = 8, angle = 50, hjust = 1),
+        axis.title.y = element_text(size = 12),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
 bre_graph
 
 ggsave("Results/Plots/bre_bargraph.png",
@@ -420,11 +427,18 @@ ggsave("Results/Plots/bre_bargraph.png",
 
 
 
-rho_graph <- df_of_taxa %>% 
+rho_graph <- df_rhodo %>% 
   ggplot(aes(Gender,Abundance,fill=Gender)) +
   geom_boxplot(outlier.shape = NA) +
   geom_jitter(height=0, width=0.2) +
-  facet_wrap(~Group, ncol = 3, scales = 'free')
+  facet_wrap(~Group, ncol = 3, scales = 'free') +
+  scale_x_discrete(labels = c("female" = "Female", "male" = "Male")) +
+  theme_bw() +
+  theme(legend.position = "none",
+        axis.text.x = element_text(size = 8, angle = 50, hjust = 1),
+        axis.title.y = element_text(size = 12),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
 rho_graph
 
 ggsave("Results/Plots/rho_bargraph.png",
