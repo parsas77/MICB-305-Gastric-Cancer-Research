@@ -55,7 +55,13 @@ for(l in list){
     scale_color_manual(values = c("female" = "#F8766D", "male" = "#00BFC4"),
                        labels = c("female" = "Female", "male" = "Male")) +
     theme_classic() +
-    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(
+      plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+      axis.title = element_text(size = 13),
+      axis.text = element_text(size = 11),
+      legend.title = element_text(size = 14, face = "bold"),
+      legend.text = element_text(size = 12),
+      legend.key.size = unit(1.2, "cm")) +
     labs(
       title = l,
       x = "MDS1",
@@ -75,10 +81,15 @@ combined_plot <- wrap_plots(
   plot_list[["Chronic gastritis (CG)"]],
   plot_list[[ "Intestinal metaplasia (IM）"]],
   plot_list[["Intraepithelial neoplasia (IN)"]],
-  plot_list[["Gastric cancer (GC)"]]
-)
+  plot_list[["Gastric cancer (GC)"]],
+  ncol = 3
+) +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "right")
 
 combined_plot
+
+
 
 # combined_plot <- combined_plot + plot_annotation(tag_levels = "A")
 # Save plots!
