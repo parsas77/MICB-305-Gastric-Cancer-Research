@@ -384,3 +384,53 @@ indicator_pub_table
 
 # Save the table
 gtsave(indicator_pub_table, "Results/Tables/IN_indicator_genera_sex.png")
+
+
+# Plot the two taxa that are indicators
+genus_to_plot = indval_table %>% 
+ rownames()
+genus_to_plot
+
+df_of_taxa = prune_taxa(genus_to_plot, ps_filt) %>% psmelt()|>
+  mutate(Group = factor(Group,
+                        levels = c("Healthy control (HC)",
+                                   "Chronic gastritis (CG)", 
+                                   "Intestinal metaplasia (IM）",
+                                   "Intraepithelial neoplasia (IN)", 
+                                   "Gastric cancer (GC)")))
+
+df_bre <- df_of_taxa |>
+  filter(Genus == " g__Brevundimonas")
+
+df_rhodo <- df_of_taxa|>
+  filter(Genus == " g__Rhodococcus")
+
+
+bre_graph <- df_bre %>% 
+  ggplot(aes(Gender,Abundance,fill=Gender)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(height=0, width=0.2) +
+  facet_wrap(~Group, ncol = 3, scales = 'free')
+bre_graph
+
+ggsave("Results/Plots/bre_bargraph.png",
+       bre_graph,
+       width= 10,
+       height = 10)
+
+
+
+rho_graph <- df_of_taxa %>% 
+  ggplot(aes(Gender,Abundance,fill=Gender)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(height=0, width=0.2) +
+  facet_wrap(~Group, ncol = 3, scales = 'free')
+rho_graph
+
+ggsave("Results/Plots/rho_bargraph.png",
+       rho_graph,
+       width= 10,
+       height = 10)
+
+
+
