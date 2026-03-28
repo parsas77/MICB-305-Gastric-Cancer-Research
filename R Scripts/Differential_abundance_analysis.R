@@ -101,17 +101,25 @@ intraepithelial_neoplasia_statistical_table = intraepithelial_neoplasia_out$res
 intraepithelial_neoplasia_taxa <- intraepithelial_neoplasia_statistical_table %>%
   filter(diff_robust_Gendermale == TRUE)
 
+# Create ordered Genus levels based on log2 fold change
+genus_levels <- intraepithelial_neoplasia_taxa %>%
+  mutate(Genus = as.character(tax_table(ps_genus)[taxon, "Genus"]),
+         Genus = str_replace_all(Genus, "g__", "")) %>%
+  arrange(lfc_Gendermale) %>%
+  pull(Genus)
+
 # Plot the log 2 fold changes of differential abundance of intraepithelial neoplasia (male relative
 # to female) 
 intraepithelial_neoplasia_plot <- intraepithelial_neoplasia_taxa %>%
   mutate(Genus = as.character(tax_table(ps_genus)[taxon, "Genus"]),
          Genus = str_replace_all(Genus, "g__", ""),
+         Genus = factor(Genus, levels = genus_levels),
          Title = "Differential Abundance (Intraepithelial neoplasia)") %>%
   ggplot(aes(Genus, lfc_Gendermale, fill = Genus)) +
   geom_col() +
   coord_flip() +
-  facet_wrap(~Title, nrow = 1) +   # <-- this creates the grey box
-  labs(x = "Genus",
+  facet_wrap(~Title, nrow = 1) +   
+  labs(x = "Bacterial Genus",
        y = "Log2 Fold Change (Male relative to Female)") +
   theme_bw() +
   theme(legend.position = "none",
@@ -121,7 +129,6 @@ intraepithelial_neoplasia_plot <- intraepithelial_neoplasia_taxa %>%
         panel.grid.minor = element_blank())
 
 intraepithelial_neoplasia_plot
-
 
 # 5) Gastric cancer only: Male vs Female
 ps_gastric_cancer <- subset_samples(ps_genus, Group == "Gastric cancer (GC)")
