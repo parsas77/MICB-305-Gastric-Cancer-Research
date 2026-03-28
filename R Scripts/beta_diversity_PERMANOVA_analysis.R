@@ -130,6 +130,8 @@ stratification
 
 #### PERMANOVA Analysis ####
 
+set.seed(421)
+
 # Select GC gastric disease stage to analyze
 gc_stage <- c("Gastric cancer (GC)") # Repeat this with the four other stages!
 
@@ -277,7 +279,7 @@ stats_in
 ## Chronic Gastritis (CG) ##
 
 # Select CG gastric disease stage to analyze
-cg_stage <- c("Gastric cancer (GC)") 
+cg_stage <- c("Chronic gastritis (CG)") 
 
 # Keep ONLY samples from that stage
 cg_samples_to_keep = gastric_metadata %>% filter(Group %in% cg_stage) %>% 
