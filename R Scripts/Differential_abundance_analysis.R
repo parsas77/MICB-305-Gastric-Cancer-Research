@@ -114,13 +114,14 @@ intraepithelial_neoplasia_plot <- intraepithelial_neoplasia_taxa %>%
   mutate(Genus = as.character(tax_table(ps_genus)[taxon, "Genus"]),
          Genus = str_replace_all(Genus, "g__", ""),
          Genus = factor(Genus, levels = genus_levels),
-         Title = "Differential Abundance (Intraepithelial neoplasia)") %>%
+         Title = "Intraepithelial neoplasia (IN)") %>%
   ggplot(aes(Genus, lfc_Gendermale, fill = Genus)) +
   geom_col() +
   coord_flip() +
   facet_wrap(~Title, nrow = 1) +   
   labs(x = "Bacterial Genus",
-       y = "Log2 Fold Change (Male relative to Female)") +
+       y = "Log2 Fold Change
+(male relative to female)") +
   theme_bw() +
   theme(legend.position = "none",
         strip.text = element_text(size = 16,hjust = 0.5),
@@ -149,7 +150,7 @@ gastric_cancer_statistical_table = gastric_cancer_out$res
 # Save plot to GitHub results folder
 ggsave("Results/Plots/IN_Genus_Differential_Abundance_Male_vs_Female.png",
        intraepithelial_neoplasia_plot,
-       width = 8.5,
-       height = 6)
+       width = 7,
+       height = 7)
 
 
