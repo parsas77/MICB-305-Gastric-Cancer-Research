@@ -127,7 +127,11 @@ intraepithelial_neoplasia_plot <- intraepithelial_neoplasia_taxa %>%
         strip.text = element_text(size = 16,hjust = 0.5),
         strip.background = element_rect(fill = "grey85", color = "black"),
         panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank())
+        panel.grid.minor = element_blank(),
+        axis.text.x = element_text(size = 14),
+        axis.text.y = element_text(size = 14),
+        axis.title.x = element_text(size = 16),
+        axis.title.y = element_text(size = 16))
 
 intraepithelial_neoplasia_plot
 
@@ -150,7 +154,7 @@ gastric_cancer_statistical_table = gastric_cancer_out$res
 # Save plot to GitHub results folder
 ggsave("Results/Plots/Differential_abundance/IN_Genus_Differential_Abundance_Male_vs_Female.png",
        intraepithelial_neoplasia_plot,
-       width = 7,
+       width = 11,
        height = 7)
 
 
