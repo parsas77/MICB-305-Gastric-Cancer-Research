@@ -1,0 +1,129 @@
+  ---
+title: "Project"
+output: html_document
+---
+
+```{r libraries, include=FALSE}
+library(tidyverse)
+library(phyloseq)
+library(ggpicrust2)
+library(GGally)
+library('pheatmap')
+```
+
+## Load physloseq and rarefaction
+
+```{r load_data}
+meta = readRDS("ps.rds") %>%
+  .@sam_data %>% data.frame() %>%
+  rownames_to_column("sample_name")
+
+ko = read.delim("pred_metagenome_unstrat.tsv", row.names=1)
+
+```
+
+# Differential Analysis
+
+```{r}
+#Healthy (control) in male and female filtered for body
+
+HC_difference = meta %>%
+  filter(Group == "Healthy control (HC)") %>%
+  filter(Site == "gastric body")
+
+ko_filt_HC = ko %>% select(all_of(HC_difference$sample_name))
+
+daa_results_df_HC = pathway_daa(abundance = ko_filt_HC,
+                             metadata = HC_difference,
+                             group = "Gender",
+                             daa_method = "LinDA",
+                             select = NULL, reference = NULL)
+
+daa_annotated_results_df_HC = pathway_annotation(pathway = "KO",
+                                              daa_results_df = daa_results_df_HC,
+                                              ko_to_kegg = TRUE)
+
+saveRDS(daa_annotated_results_df_HC, "daa_annotated_results_df_HC_body.rds")
+daa_annotated_results_df_HC = read_rds("daa_annotated_results_df_HC_body.rds")
+
+
+# Chronic Gastritis (CG) in male and Female filtered for body
+CG_difference = meta %>%
+  filter(Group == "Chronic gastritis (CG)")%>%
+  filter(Site == "gastric body")
+
+ko_filt_CG= ko %>% select(all_of(CG_difference$sample_name))
+
+daa_results_df_CG = pathway_daa(abundance = ko_filt_CG,
+                             metadata = CG_difference,
+                             group = "Gender",
+                             daa_method = "LinDA",
+                             select = NULL, reference = NULL)
+
+daa_annotated_results_df_CG = pathway_annotation(pathway = "KO",
+                                              daa_results_df = daa_results_df_CG,
+                                              ko_to_kegg = TRUE)
+
+saveRDS(daa_annotated_results_df_CG, "daa_annotated_results_df_CG_body.rds")
+daa_annotated_results_df_CG = read_rds("daa_annotated_results_df_CG_body.rds")
+
+#Intestinal Metaplasia (IM) in male and Female filtered for body
+IM_difference = meta %>%
+  filter(Group == "Intestinal metaplasia (IM）")%>%
+  filter(Site == "gastric body")
+ko_filt_IM= ko %>% select(all_of(IM_difference$sample_name))
+
+daa_results_df_IM = pathway_daa(abundance = ko_filt_IM,
+                             metadata = IM_difference,
+                             group = "Gender",
+                             daa_method = "LinDA",
+                             select = NULL, reference = NULL)
+
+daa_annotated_results_df_IM = pathway_annotation(pathway = "KO",
+                                              daa_results_df = daa_results_df_IM,
+                                              ko_to_kegg = TRUE)
+
+saveRDS(daa_annotated_results_df_IM, "daa_annotated_results_df_IM_body.rds")
+daa_annotated_results_df_IM = read_rds("daa_annotated_results_df_IM_body.rds")
+
+#Intraepithelial neoplasia (IN) in male and Female filtered for body
+IN_difference = meta %>%
+  filter(Group == "Intraepithelial neoplasia (IN)")%>%
+  filter(Site == "gastric body")
+ko_filt_IN= ko %>% select(all_of(IN_difference$sample_name))
+
+daa_results_df_IN = pathway_daa(abundance = ko_filt_IN,
+                             metadata = IN_difference,
+                             group = "Gender",
+                             daa_method = "LinDA",
+                             select = NULL, reference = NULL)
+
+daa_annotated_results_df_IN = pathway_annotation(pathway = "KO",
+                                              daa_results_df = daa_results_df_IN,
+                                              ko_to_kegg = TRUE)
+
+saveRDS(daa_annotated_results_df_IN, "daa_annotated_results_df_IN_body.rds")
+daa_annotated_results_df_IN = read_rds("daa_annotated_results_df_IN_body.rds")
+
+#"Gastric cancer (GC) in male and Female filtered for body
+GC_difference = meta %>%
+  filter(Group == "Gastric cancer (GC)")%>%
+  filter(Site == "gastric body")
+ko_filt_GC= ko %>% select(all_of(GC_difference$sample_name))
+
+daa_results_df_GC = pathway_daa(abundance = ko_filt_GC,
+                             metadata = GC_difference,
+                             group = "Gender",
+                             daa_method = "LinDA",
+                             select = NULL, reference = NULL)
+
+daa_annotated_results_df_GC = pathway_annotation(pathway = "KO",
+                                              daa_results_df = daa_results_df_GC,
+                                              ko_to_kegg = TRUE)
+
+saveRDS(daa_annotated_results_df_GC, "daa_annotated_results_df_GC_body.rds")
+daa_annotated_results_df_GC = read_rds("daa_annotated_results_df_GC.rds")
+
+```
+
+
