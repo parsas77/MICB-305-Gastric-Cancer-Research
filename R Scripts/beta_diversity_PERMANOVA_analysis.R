@@ -87,11 +87,10 @@ combined_plot <- wrap_plots(
   plot_layout(guides = "collect") &
   theme(legend.position = "right")
 
+combined_plot <- combined_plot + plot_annotation(tag_levels = "A",,
+                                                 theme = theme(plot.tag = element_text(face = "bold", size =16)))
+
 combined_plot
-
-
-
-# combined_plot <- combined_plot + plot_annotation(tag_levels = "A")
 # Save plots!
   ggsave(
     filename = paste("Results/Plots/Beta_Diversity/beta_diversity_combined.png"),
