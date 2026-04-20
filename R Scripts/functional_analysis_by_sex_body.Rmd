@@ -1,5 +1,5 @@
   ---
-title: "Project"
+title: "Functional Analysis by Sex, for gastric Body"
 output: html_document
 ---
 
@@ -14,11 +14,11 @@ library('pheatmap')
 ## Load physloseq and rarefaction
 
 ```{r load_data}
-meta = readRDS("ps.rds") %>%
+meta = readRDS("../Datasets/phyloseq_taxonomy.rds") %>%
   .@sam_data %>% data.frame() %>%
   rownames_to_column("sample_name")
 
-ko = read.delim("pred_metagenome_unstrat.tsv", row.names=1)
+ko = read.delim("../Datasets/pred_metagenome_unstrat.tsv", row.names=1)
 
 ```
 
@@ -43,8 +43,8 @@ daa_annotated_results_df_HC = pathway_annotation(pathway = "KO",
                                               daa_results_df = daa_results_df_HC,
                                               ko_to_kegg = TRUE)
 
-saveRDS(daa_annotated_results_df_HC, "daa_annotated_results_df_HC_body.rds")
-daa_annotated_results_df_HC = read_rds("daa_annotated_results_df_HC_body.rds")
+saveRDS(daa_annotated_results_df_HC, "../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_HC_body.rds")
+daa_annotated_results_df_HC = read_rds("../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_HC_body.rds")
 
 
 # Chronic Gastritis (CG) in male and Female filtered for body
@@ -64,8 +64,8 @@ daa_annotated_results_df_CG = pathway_annotation(pathway = "KO",
                                               daa_results_df = daa_results_df_CG,
                                               ko_to_kegg = TRUE)
 
-saveRDS(daa_annotated_results_df_CG, "daa_annotated_results_df_CG_body.rds")
-daa_annotated_results_df_CG = read_rds("daa_annotated_results_df_CG_body.rds")
+saveRDS(daa_annotated_results_df_CG, "../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_CG_body.rds")
+daa_annotated_results_df_CG = read_rds("../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_CG_body.rds")
 
 #Intestinal Metaplasia (IM) in male and Female filtered for body
 IM_difference = meta %>%
@@ -83,8 +83,8 @@ daa_annotated_results_df_IM = pathway_annotation(pathway = "KO",
                                               daa_results_df = daa_results_df_IM,
                                               ko_to_kegg = TRUE)
 
-saveRDS(daa_annotated_results_df_IM, "daa_annotated_results_df_IM_body.rds")
-daa_annotated_results_df_IM = read_rds("daa_annotated_results_df_IM_body.rds")
+saveRDS(daa_annotated_results_df_IM, "../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_IM_body.rds")
+daa_annotated_results_df_IM = read_rds("../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_IM_body.rds")
 
 #Intraepithelial neoplasia (IN) in male and Female filtered for body
 IN_difference = meta %>%
@@ -102,8 +102,8 @@ daa_annotated_results_df_IN = pathway_annotation(pathway = "KO",
                                               daa_results_df = daa_results_df_IN,
                                               ko_to_kegg = TRUE)
 
-saveRDS(daa_annotated_results_df_IN, "daa_annotated_results_df_IN_body.rds")
-daa_annotated_results_df_IN = read_rds("daa_annotated_results_df_IN_body.rds")
+saveRDS(daa_annotated_results_df_IN, "../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_IN_body.rds")
+daa_annotated_results_df_IN = read_rds("../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_IN_body.rds")
 
 #"Gastric cancer (GC) in male and Female filtered for body
 GC_difference = meta %>%
@@ -121,8 +121,8 @@ daa_annotated_results_df_GC = pathway_annotation(pathway = "KO",
                                               daa_results_df = daa_results_df_GC,
                                               ko_to_kegg = TRUE)
 
-saveRDS(daa_annotated_results_df_GC, "daa_annotated_results_df_GC_body.rds")
-daa_annotated_results_df_GC = read_rds("daa_annotated_results_df_GC.rds")
+saveRDS(daa_annotated_results_df_GC, "../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_GC_body.rds")
+daa_annotated_results_df_GC = read_rds("../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_GC.rds")
 
 ```
 

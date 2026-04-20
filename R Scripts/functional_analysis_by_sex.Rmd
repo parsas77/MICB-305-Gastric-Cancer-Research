@@ -14,11 +14,11 @@ library('pheatmap')
 ## Load physloseq and rarefaction
 
 ```{r load_data}
-meta = readRDS("Datasets/phyloseq_taxonomy.rds.rds") %>%
+meta = readRDS("../Datasets/phyloseq_taxonomy.rds") %>%
   .@sam_data %>% data.frame() %>%
   rownames_to_column("sample_name")
 
-ko = read.delim("pred_metagenome_unstrat.tsv", row.names=1)
+ko = read.delim("../Datasets/pred_metagenome_unstrat.tsv", row.names=1)
 
 ```
 
@@ -42,8 +42,8 @@ daa_annotated_results_df_HC = pathway_annotation(pathway = "KO",
                                               daa_results_df = daa_results_df_HC,
                                               ko_to_kegg = TRUE)
 
-saveRDS(daa_annotated_results_df_HC, "daa_annotated_results_df_HC.rds")
-daa_annotated_results_df_HC = read_rds("daa_annotated_results_df_HC.rds")
+saveRDS(daa_annotated_results_df_HC, "../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_HC.rds")
+daa_annotated_results_df_HC = read_rds("../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_HC.rds")
 
 
 #Chronic Gastiritis (CG) in male and Female
@@ -61,8 +61,8 @@ daa_annotated_results_df_CG = pathway_annotation(pathway = "KO",
                                               daa_results_df = daa_results_df_CG,
                                               ko_to_kegg = TRUE)
 
-saveRDS(daa_annotated_results_df_CG, "daa_annotated_results_df_CG.rds")
-daa_annotated_results_df_CG = read_rds("daa_annotated_results_df_CG.rds")
+saveRDS(daa_annotated_results_df_CG, "../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_CG.rds")
+daa_annotated_results_df_CG = read_rds("../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_CG.rds")
 
 #Intestinal Metaplasia (IM) in male and Female
 IM_difference = meta %>%
@@ -79,8 +79,8 @@ daa_annotated_results_df_IM = pathway_annotation(pathway = "KO",
                                               daa_results_df = daa_results_df_IM,
                                               ko_to_kegg = TRUE)
 
-saveRDS(daa_annotated_results_df_IM, "daa_annotated_results_df_IM.rds")
-daa_annotated_results_df_IM = read_rds("daa_annotated_results_df_IM.rds")
+saveRDS(daa_annotated_results_df_IM, "../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_IM.rds")
+daa_annotated_results_df_IM = read_rds("../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_IM.rds")
 
 #Intraepithelial neoplasia (IN) in male and Female
 IN_difference = meta %>%
@@ -97,8 +97,8 @@ daa_annotated_results_df_IN = pathway_annotation(pathway = "KO",
                                               daa_results_df = daa_results_df_IN,
                                               ko_to_kegg = TRUE)
 
-saveRDS(daa_annotated_results_df_IN, "daa_annotated_results_df_IN.rds")
-daa_annotated_results_df_IN = read_rds("daa_annotated_results_df_IN.rds")
+saveRDS(daa_annotated_results_df_IN, "../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_IN.rds")
+daa_annotated_results_df_IN = read_rds("../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_IN.rds")
 
 #"Gastric cancer (GC) in male and Female
 GC_difference = meta %>%
@@ -115,15 +115,15 @@ daa_annotated_results_df_GC = pathway_annotation(pathway = "KO",
                                               daa_results_df = daa_results_df_GC,
                                               ko_to_kegg = TRUE)
 
-saveRDS(daa_annotated_results_df_GC, "daa_annotated_results_df_GC.rds")
-daa_annotated_results_df_GC = read_rds("daa_annotated_results_df_GC.rds")
+saveRDS(daa_annotated_results_df_GC, "../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_GC.rds")
+daa_annotated_results_df_GC = read_rds("../Results/Functional Analysis Annotated pathway/daa_annotated_results_df_GC.rds")
 
 ```
 
 # Functional Analysis Graphs
 
 ```{r}
-source("ggpicrust2_errorbar_function_fixed.R")
+source("../Datasets/ggpicrust2_errorbar_function_fixed.R")
 
 # HC graph - no significance
 daa_annotated_results_df_HC_sig = daa_annotated_results_df_HC %>% 
@@ -131,19 +131,18 @@ daa_annotated_results_df_HC_sig = daa_annotated_results_df_HC %>%
   filter( p_adjust<4 & abs(log2_fold_change >= 1))
 
 nrow(daa_annotated_results_df_HC_sig)
-summary(daa_annotated_results_df_HC)
 
-# HC_graph = pathway_errorbar_fixed(abundance = ko_filt_HC,
- #                                 daa_results_df = daa_annotated_results_df_HC_sig,
-  #                                Group = HC_difference$Gender,
-     #                             p_values_threshold = 0.7,
-   #                               wrap_label = T, wraplength = 50,
-     #                             order_by_log = F,
-        #                          order = "pathway_class",
-       #                           ko_to_kegg = TRUE,
-         #                         p_value_bar = TRUE,
-       #                           x_lab = "pathway_name")
-
+HC_graph = pathway_errorbar_fixed(abundance = ko_filt_HC,
+                                 daa_results_df = daa_annotated_results_df_HC_sig,
+                                  Group = HC_difference$Gender,
+                                  p_values_threshold = 0.7,
+                                  wrap_label = T, wraplength = 50,
+                                  order_by_log = F,
+                                  order = "pathway_class",
+                                  ko_to_kegg = TRUE,
+                                  p_value_bar = TRUE,
+                                  x_lab = "pathway_name")
+ggsave("../Results/Plots/functional_analysis/same_stage_by_gender/HC graph final.png", plot=CG_graph, width =20, height = 16)
 
 # CG graph
 daa_annotated_results_df_CG_sig = daa_annotated_results_df_CG %>% 
@@ -166,7 +165,7 @@ CG_graph = pathway_errorbar_fixed(abundance = ko_filt_CG,
                                   x_lab = "pathway_name")
 
 CG_graph
-ggsave("CG graph final.png", plot=CG_graph, width =20, height = 16)
+ggsave("../Results/Plots/functional_analysis/same_stage_by_gender/CG graph final.png", plot=CG_graph, width =20, height = 16)
 
 
 # IM graph - no significance
@@ -210,7 +209,7 @@ IN_graph = pathway_errorbar_fixed(abundance = ko_filt_IN,
 
 
 IN_graph
-ggsave("IN graph final.png", plot=IN_graph, width =22, height = 14)
+ggsave("../Results/Plots/functional_analysis/same_stage_by_gender/IN graph final.png", plot=IN_graph, width =22, height = 14)
 
 # GC graph - no significant difference
 daa_annotated_results_df_GC_sig = daa_annotated_results_df_GC %>% 
@@ -231,7 +230,7 @@ GC_graph = pathway_errorbar_fixed(abundance = ko_filt_GC,
                                   x_lab = "pathway_name")
 
 GC_graph
-ggsave("GC graph final.png", plot=GC_graph, width =20, height = 16)
+ggsave("../Results/Plots/functional_analysis/same_stage_by_gender/GC graph final.png", plot=GC_graph, width =20, height = 16)
 
 
 
@@ -240,7 +239,7 @@ ggsave("GC graph final.png", plot=GC_graph, width =20, height = 16)
 # Heat map and PCA
 ```{r}
 # CG
-ko_relab = read.delim("pred_metagenome_unstrat.tsv", row.names=1) %>% 
+ko_relab = read.delim("../Datasets/pred_metagenome_unstrat.tsv", row.names=1) %>% 
   apply(2,function(x) x/sum(x)) %>% as.data.frame()
 colSums(ko_relab)
 
@@ -271,7 +270,7 @@ CG_PCA = pathway_pca(abundance = ko_filt_CG,
             metadata = CG_difference, 
             group = "Gender")
 
-ggsave("CG PCA plot.png", plot=CG_PCA, width =12, height = 8)
+ggsave("../Results/Plots/functional_analysis/same_stage_by_gender/CG PCA plot.png", plot=CG_PCA, width =12, height = 8)
 
 # IN
 sig_features_IN = daa_annotated_results_df_IN_sig %>% 
@@ -299,28 +298,28 @@ IN_PCA = pathway_pca(abundance = ko_filt_IN,
             metadata = IN_difference, 
             group = "Gender")
 
-ggsave("IN PCA plot.png", plot=IN_PCA, width =12, height = 8)
+ggsave("../Results/Plots/functional_analysis/same_stage_by_gender/IN PCA plot.png", plot=IN_PCA, width =12, height = 8)
 
 # HC
 HC_PCA = pathway_pca(abundance = ko_filt_HC,
             metadata = HC_difference, 
             group = "Gender")
 
-ggsave("HC PCA plot.png", plot=HC_PCA, width =12, height = 8)
+ggsave("../Results/Plots/functional_analysis/same_stage_by_gender/HC PCA plot.png", plot=HC_PCA, width =12, height = 8)
 
 # IM
 IM_PCA = pathway_pca(abundance = ko_filt_IM,
             metadata = IM_difference, 
             group = "Gender")
 
-ggsave("IM PCA plot.png", plot=IM_PCA, width =12, height = 8)
+ggsave("../Results/Plots/functional_analysis/same_stage_by_gender/IM PCA plot.png", plot=IM_PCA, width =12, height = 8)
 
 # GC
 GC_PCA = pathway_pca(abundance = ko_filt_GC,
             metadata = GC_difference, 
             group = "Gender")
 
-ggsave("GC PCA plot.png", plot=GC_PCA, width =12, height = 8)
+ggsave("../Results/Plots/functional_analysis/same_stage_by_gender/GC PCA plot.png", plot=GC_PCA, width =12, height = 8)
 
 
 ```
@@ -342,7 +341,7 @@ CG_plot = daa_annotated_results_df_CG_sig %>%
   theme_bw()
 
 CG_plot
-ggsave("CG supplement plot.png", plot=CG_plot, width =12, height = 8)
+ggsave("../Results/Plots/functional_analysis/same_stage_by_gender/CG supplement plot.png", plot=CG_plot, width =12, height = 8)
 
 # IN
 IN_plot = daa_annotated_results_df_IN_sig %>%
@@ -357,7 +356,7 @@ IN_plot = daa_annotated_results_df_IN_sig %>%
   theme_bw()
 
 IN_plot
-ggsave("IN supplement plot.png", plot=IN_plot, width =12, height = 8)
+ggsave("../Results/Plots/functional_analysis/same_stage_by_gender/IN supplement plot.png", plot=IN_plot, width =12, height = 8)
 
 
 
