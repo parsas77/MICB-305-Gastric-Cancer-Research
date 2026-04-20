@@ -14,7 +14,7 @@ library('pheatmap')
 ## Load physloseq and rarefaction
 
 ```{r load_data}
-meta = readRDS("ps.rds") %>%
+meta = readRDS("Datasets/phyloseq_taxonomy.rds.rds") %>%
   .@sam_data %>% data.frame() %>%
   rownames_to_column("sample_name")
 
