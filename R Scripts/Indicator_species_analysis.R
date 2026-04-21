@@ -6,22 +6,22 @@ library(phyloseq)
 library(indicspecies)
 library(gt)
 
-# Load object
+# Load the phyloseq object
 ps = readRDS('Datasets/phyloseq_taxonomy.rds')
 
 # Aggregate ASVs to the genus level
 # convert phyloseq to relative abundance 
-#apply abundance filter
+# apply abundance filter
 ps_genus = tax_glom(ps,'Genus')
 ps_relab = transform_sample_counts(ps_genus, function(x) x / sum(x))
 ps_filt = filter_taxa(ps_relab, function(x) mean(x) > 0.001, TRUE)
 otu_table = data.frame(otu_table(ps_filt))
 
 # Indicator species analysis --------------
+
 # Stratified by Gastric Disease Stage only -------------------------
 
-# Find indicator species for each gastric disease stages - without stratifying
-# by biological sex 
+# Find indicator species for each gastric disease stages - without stratifying by biological sex 
 set.seed(520)
 indval = multipatt(t(otu_table), 
                     cluster= ps_filt@sam_data$Group,
@@ -64,16 +64,15 @@ indval_long <- indval_table_genus  %>%
                                                    "Intraepithelial neoplasia (IN)", 
                                                    "Gastric cancer (GC)")))
 
-# Keep top N per stage
+# Keep top N per stage (here I chose to keep the top 10)
 topN <- 10
 plot_df <- indval_long %>%
   group_by(Gastric_Disease_Stage) %>%
   slice_max(stat, n = topN, with_ties = FALSE) %>%
   ungroup()
 
-# Create dotplot 
+# Create dotplot for visualization of top 10 indicator genera
 plot_df$Plot_Title <- "Indicator Genus for Gastric Disease Stage"
-
 dotplot_nosex <- ggplot(plot_df, aes(
   x = Gastric_Disease_Stage,
   y = fct_reorder(Genus, stat)
@@ -100,16 +99,17 @@ dotplot_nosex <- ggplot(plot_df, aes(
 
 dotplot_nosex
 
+# Save the plot 
 ggsave("Results/Plots/Ind_Genus_Disease_Stage_nosex.png",
        dotplot_nosex,
        width= 10,
        height = 10)
 
-# Individual analysis for each sex between stages  -------------------------
+# Indicator taxa analysis comparing disease stages for each sex  -------------------------
 
+# Create a function that includes the analysis as well as visualization
 # Function 1 ------------------
-
-run_indval <- function(ps_obj, otu_table, seed = 520, cat) {
+run_indval1 <- function(ps_obj, otu_table, seed = 520, cat) {
   set.seed(520)
   indval = multipatt(t(otu_table), 
                      cluster= ps_obj@sam_data$Group,
@@ -168,11 +168,13 @@ run_indval <- function(ps_obj, otu_table, seed = 520, cat) {
   dotplot
 }
 
+# Subset the phyloseq objects by sex 
 
+# Subset the female samples 
 ps_f <- subset_samples(ps_filt, Gender == "female")
 otu_table_f = data.frame(otu_table(ps_f))
 
-dotplot <- run_indval(ps_f, 
+dotplot <- run_indval1(ps_f, 
                       otu_table_f, 
                       seed = 520, 
                       cat = "Female") 
@@ -182,9 +184,10 @@ ggsave("Results/Plots/Ind_Genus_Disease_Stage_Female.png",
        width= 10,
        height = 10)
 
+# Subset the male samples 
 ps_m <- subset_samples(ps_filt, Gender == "male")
 otu_table_m = data.frame(otu_table(ps_m))
-dotplot <- run_indval(ps_f, 
+dotplot <- run_indval1(ps_f, 
                       otu_table_f, 
                       seed = 520, 
                       cat = "Male") 
@@ -198,6 +201,7 @@ ggsave("Results/Plots/Ind_Genus_Disease_Stage_Male.png",
 # Comparison between sex within each stage  -------------------------
 # No significant indicator taxa between male and female for all 4 stages except for IN
 
+# Create a function that includes the analysis as well as visualization
 # Function 2 ---------------------
 run_indval <- function(ps_obj, otu_table, seed = 520, cat) {
   set.seed(520)
@@ -255,6 +259,8 @@ run_indval <- function(ps_obj, otu_table, seed = 520, cat) {
   dotplot
 }
 
+# Subset the phyloseq object by each disease stages and then run the function for
+# indicator taxa analysis + visualization 
 
 hc <- subset_samples(ps_filt, Group == "Healthy control (HC)")
 otu_table_hc = data.frame(otu_table(hc))
@@ -325,6 +331,7 @@ genus_map <- tax_table(IN) %>%
   rownames_to_column("taxa_id") %>%
   transmute(taxa_id, Genus = as.character(Genus))
 
+# Wrangle the indval_table so we can input it into making a publication ready table 
 indval_table_genus <- indval_table %>%
   rownames_to_column("taxa_id") %>%
   left_join(genus_map, by = "taxa_id") %>%
@@ -345,6 +352,8 @@ indval_table_genus <- indval_table %>%
   arrange(Biological_Sex, desc(Indicator_value))
 indval_table_genus
 
+# Make a publication-ready table containing the indicator genera of interest and the 
+# corresponding metrics 
 indicator_pub_table <- indval_table_genus %>%
   gt() %>%
   tab_header(
@@ -386,11 +395,14 @@ indicator_pub_table
 gtsave(indicator_pub_table, "Results/Tables/IN_indicator_genera_sex.png")
 
 
-# Plot the two taxa that are indicators
+# Plot the two taxa that are indicator genera: Brevundimonas and Rhodococcus 
+
+# Extract the names of the indicator genera 
 genus_to_plot = indval_table %>% 
  rownames()
 genus_to_plot
 
+# Melt the phyloseq object into a dataframe 
 df_of_taxa = prune_taxa(genus_to_plot, ps_filt) %>% psmelt()|>
   mutate(Group = factor(Group,
                         levels = c("Healthy control (HC)",
@@ -399,13 +411,14 @@ df_of_taxa = prune_taxa(genus_to_plot, ps_filt) %>% psmelt()|>
                                    "Intraepithelial neoplasia (IN)", 
                                    "Gastric cancer (GC)")))
 
+# Subset the dataframe based on the indicator taxa 
 df_bre <- df_of_taxa |>
   filter(Genus == " g__Brevundimonas")
 
 df_rhodo <- df_of_taxa|>
   filter(Genus == " g__Rhodococcus")
 
-
+# Boxplots for Brevundimonas 
 bre_graph <- df_bre %>% 
   ggplot(aes(Gender,Abundance,fill=Gender)) +
   geom_boxplot(outlier.shape = NA) +
@@ -426,7 +439,7 @@ ggsave("Results/Plots/bre_bargraph.png",
        height = 10)
 
 
-
+# Boxplots for Rhodococcus 
 rho_graph <- df_rhodo %>% 
   ggplot(aes(Gender,Abundance,fill=Gender)) +
   geom_boxplot(outlier.shape = NA) +

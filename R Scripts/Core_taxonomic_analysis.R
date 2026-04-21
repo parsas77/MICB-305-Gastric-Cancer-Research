@@ -1,10 +1,11 @@
+# Load in the required packages --> install first is not installed 
 library(tidyverse)
 library(phyloseq)
 library(microbiome)
 library(ggVennDiagram)
 library(patchwork)
 
-# Load object
+# Load the phyloseq object
 ps = readRDS('Datasets/phyloseq_taxonomy.rds')
 
 # Rarefy and convert to relative abundance and use tax_glom to the genus level
@@ -12,8 +13,7 @@ psrare = rarefy_even_depth(ps, sample.size = 8000)
 ps_rare_relab = transform(psrare, 'compositional')
 ps_rare_relab_genus = tax_glom(ps_rare_relab, 'Genus')
 
-# Make core microbiome function ----------------
-
+# # Find maximum value for each stage to set limit for scale fill 
 get_stage_fill_max <- function(ps, detection = 0.001, prevalence = 0.2) {
   sex.male <- subset_samples(ps, Gender == "male")
   sex.female <- subset_samples(ps, Gender == "female")
@@ -27,7 +27,7 @@ get_stage_fill_max <- function(ps, detection = 0.001, prevalence = 0.2) {
   max(venn_region(venn_dat)$count, na.rm = TRUE)
 }
 
-# Find maximum value for each stage to set limit for scale fill 
+# Run the function for each stage to determine the scale limit 
 hc <- subset_samples(ps_rare_relab_genus, Group == "Healthy control (HC)")
 CG <- subset_samples(ps_rare_relab_genus, Group == "Chronic gastritis (CG)")
 IM <- subset_samples(ps_rare_relab_genus, Group == "Intestinal metaplasia (IM）")
@@ -40,6 +40,9 @@ scale_limit <- max(get_stage_fill_max(hc),
                    get_stage_fill_max(IN), 
                    get_stage_fill_max(GC))
 
+
+# Make the core microbiome function to run for each stage 
+# Includes the analysis and the venn diagrams used to visualize the results 
 
 core_graph <- function(ps, detection, prevalence, title = NULL) {
   # Subset phyloseq object
@@ -71,7 +74,7 @@ core_graph <- function(ps, detection, prevalence, title = NULL) {
     )
 }
 
-# Run analysis by each stage -------------- 
+# Run analysis by stage -------------- 
 hc_plot <- core_graph(hc, 0.001, 0.2, "Healthy control")+
   theme(legend.position = "none")
 hc_plot 
@@ -115,8 +118,7 @@ ggsave("Results/Plots/core_microbiome/core_genus_sex_GC.png",
        width = 13,
        height = 13)
 
-# Make combined graphs
-
+# Combine venn diagrams for each stage into a single plot 
 combined_plot <- wrap_plots(
   hc_plot, CG_plot, IM_plot,
   IN_plot, GC_plot,
@@ -128,5 +130,3 @@ ggsave("Results/Plots/core_microbiome/core_genus_combined.png",
        combined_plot,
        width = 26,
        height = 18)
-
-
