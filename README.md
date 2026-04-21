@@ -116,6 +116,6 @@ Contains outputs generated from the analyses, including:
 ### Team Meeting Notes
 Notes and records from weekly meetings with our TA, including feedback, discussion points, and project guidance.
 
-### Weekly Meeting Agendas 
+### Weekly Meetings 
 Planning and scheduling notes for weekly meetings, including progress updates, topics to discuss, completed tasks, and upcoming goals.
 
