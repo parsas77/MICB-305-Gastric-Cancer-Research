@@ -113,7 +113,7 @@ Contains outputs generated from the analyses, including:
 - **Tables** – indicator genera associated with sex summary  
 - **Functional Analysis Annotated pathway** – annotated functional pathway outputs
 
-The plots/ directory contains subdirectories divided by analysis, with generated plots from each stage of the analysis. Many of these are exploratory, intermediate, or unused outputs that were retained for transparency and reproducibility, but are not part of the final manuscript. Figures used in the final paper are stored separately in [figure folder name].
+The plots/ directory contains subdirectories divided by analysis, with generated plots from each stage of the analysis. Many of these are exploratory, intermediate, or unused outputs that were retained for transparency and reproducibility, but are not part of the final manuscript. Formal figures used in the final paper are manually stored separately in Results/Figures/.
 
 ### Team Meeting Notes
 Notes and records from weekly meetings with our TA, including feedback, discussion points, and project guidance.
