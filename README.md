@@ -2,7 +2,7 @@
 
 # Sex Differences in the Gastric Mucosal Microbiome Across Gastric Carcinogenesis
 
-This repository contains the code, analyses, and outputs for a microbiome research project completed for MICB 305: Data Science in Microbiology and Immunology Research (2026W T2) at the University of British Columbia. The project investigated whether biological sex modifies gastric mucosal microbiome composition and predicted function across stages of gastric carcinogenesis.
+This repository contains the code, analyses, and outputs for a microbiome research project completed for MICB 305: Data Science in Microbiology and Immunology Research (2025W T2) at the University of British Columbia. The project investigated whether biological sex modifies gastric mucosal microbiome composition and predicted function across stages of gastric carcinogenesis.
 
 ## Authors
 
